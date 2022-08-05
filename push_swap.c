@@ -52,7 +52,8 @@ static void	check_args(t_vault *data)
 		x++;
 	}
 	errors(data);
-	check_doubles(data);
+	if (data->nbr_args > 1)
+		check_doubles(data);
 	return ;
 }
 
@@ -64,6 +65,7 @@ static void	quotes_to_args(t_vault *data)
 	if (data->nbr_args == 1)
 		data->error_code = 1;
 	errors(data);
+	check_args(data);
 	return ;
 }
 
@@ -82,18 +84,25 @@ int	main(int argc, char **argv)
 
 	data.error_code = 0;
 	data.nbr_args = 0;
-	if (argc < 2)
-		data.error_code = 1;
-	errors(&data);
+	if (argc == 1)
+		return (0);
+	data.args = malloc(sizeof(char *) * argc);
+
+	/* 
+	a ce point tout est traite comme une string.
+	objectif est de parser l'argument seul ou multiple
+
+	*/
+
+	data.args = &argv[1];
+	printf("data.args : %s\n", data.args[1]);
 	if (argc == 2)
-	{
-		data.args = &argv[1];
+			check_args(&data);
+	else if (argc > 2 && !data.args[2])
 		quotes_to_args(&data);
-	}
 	else
 	{
 		x = 1;
-		data.args = malloc(sizeof(char *) * argc);
 		while (x < argc)
 		{
 			data.args[x - 1] = argv[x];

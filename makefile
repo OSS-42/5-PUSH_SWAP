@@ -17,6 +17,8 @@ LMAGENTA = \033[95m
 LCYAN = \033[96m
 DEF_COLOR = \033[0;39m
 
+NO_OF_FILES := $(words $(wildcard *.c))
+
 #****SOURCES****
 SRC = push_swap.c\
 	  push_swap_utils.c
@@ -35,11 +37,10 @@ all:	$(NAME)
 
 $(NAME):	$(DIR_LIBFT)/$(LIBFT) $(OBJ) $(SRC)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(DIR_LIBFT)$(LIBFT)
-	@echo "$(LGREEN)Compilation complete !$(DEF_COLOR)"
+	@echo "$(LGREEN)Software Compilation completed : $(NO_OF_FILES) files done !$(DEF_COLOR)"
 
 $(DIR_LIBFT)/$(LIBFT):
 	make -C $(DIR_LIBFT)
-	@echo "$(LGREEN)LIBFT done... !$(DEF_COLOR)"
 
 #$(NAME_BONUS): $(DIR_LIBFT)/$(LIBFT) $(OBJ_BONUS) $(SRC_BONUS)
 #	$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME_BONUS) $(DIR_LIBFT)$(LIBFT)
@@ -47,7 +48,57 @@ $(DIR_LIBFT)/$(LIBFT):
 
 #bonus: $(DIR_LIBFT)/$(LIBFT) $(NAME_BONUS)
 
-#tests:	all
+tests:	all
+	@echo ""
+	@echo "Test 1 : Pas d'argument, pas d'erreur !"
+	./$(NAME)
+	@echo ""
+	@echo "Test 2 : 1 seul argument valide, pas d'erreur !"
+	./$(NAME) 1
+	./$(NAME) "1"
+	./$(NAME) -1
+	./$(NAME) "+1"
+	./$(NAME) 0
+	./$(NAME) "0"
+	@echo ""
+	@echo "Test 3 : 1 seul argument non valide = erreur"
+	./$(NAME) a
+	./$(NAME) "a"
+	./$(NAME) -a
+	./$(NAME) "-a"
+	./$(NAME) H3ll0
+	@echo ""
+	@echo "Test 4 : plusieurs arguments valides, pas d'erreur !"
+	./$(NAME) 1 03 6 4 5 2
+	./$(NAME) "1 03 6 4 5 2"
+	./$(NAME) -1 -03 +6 4 5 -2
+	./$(NAME) "-1 -03 +6 4 5 -2"
+	@echo ""
+	@echo "Test 5 : attention aux doublons !"
+	./$(NAME) 1 03 3 4 5 5
+	./$(NAME) "1 03 3 4 5 5"
+	./$(NAME) -1 -03 -3 4 5 -2
+	./$(NAME) "-1 -03 -3 4 5 -2"
+	@echo ""
+	@echo "Test 6 : pas de mots-vais caracteres svp !"
+	./$(NAME) 1 trois 6 4 cinq 2
+	./$(NAME) " 1 trois 6 4 cinq 2"
+	./$(NAME) 1 # 6 4 == 2
+	./$(NAME) "1 # 6 4 == 2"
+	./$(NAME) -1 trois +6 4 cinq -2
+	./$(NAME) "-1 trois +6 4 cinq -2"
+	@echo ""
+	@echo "Test 7 : Les limites OK !"
+	./$(NAME) 1 2147483647
+	./$(NAME) "1 2147483647"
+	./$(NAME) -1 -2147483648
+	./$(NAME) "-1 -2147483648"
+	@echo ""
+	@echo "Test 8 : au-dela KO !"
+	./$(NAME) 1 2147483648
+	./$(NAME) "1 2147483648"
+	./$(NAME) -1 -2147483649
+	./$(NAME) "-1 -2147483649"
 
 #btests : bonus
 	

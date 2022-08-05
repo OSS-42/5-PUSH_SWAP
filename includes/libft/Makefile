@@ -1,5 +1,15 @@
 NAME = libft.a
 
+#****COLORS****
+LRED = \033[91m
+LGREEN = \033[92m
+LYELLOW = \033[93
+LMAGENTA = \033[95m
+LCYAN = \033[96m
+DEF_COLOR = \033[0;39m
+
+NO_OF_FILES := $(words $(wildcard *.c))
+
 LIBCFUN = \
 		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -27,6 +37,7 @@ all:	$(NAME)
 $(NAME): $(OBJFUN)
 	@$(CC) $(CFLAGS) $(LIBCFUN)
 	@$(AR) $(NAME) $(OBJFUN)
+	@echo "$(LGREEN)LIBFT completed... $(NO_OF_FILES) files done !$(DEF_COLOR)"
 
 clean:
 	@$(RM) $(OBJFUN)
