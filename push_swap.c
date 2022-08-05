@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 {
 	t_vault	data;
 	int		x;
+	int	boucle;
 
 	data.error_code = 0;
 	data.nbr_args = 0;
@@ -88,18 +89,26 @@ int	main(int argc, char **argv)
 		return (0);
 	data.args = malloc(sizeof(char *) * argc);
 
+	data.args = &argv[1];
+	boucle = 0;
+	while (boucle < argc)
+	{
+		printf("argv #%d: %s\n", boucle + 1, argv[boucle + 1]);
+		printf("data.args : %s\n", data.args[boucle]);
+		boucle++;
+	}
+	check_args(&data);
+
 	/* 
 	a ce point tout est traite comme une string.
 	objectif est de parser l'argument seul ou multiple
-
 	*/
 
-	data.args = &argv[1];
-	printf("data.args : %s\n", data.args[1]);
-	if (argc == 2)
-			check_args(&data);
-	else if (argc > 2 && !data.args[2])
+	if (argc > 2 && !data.args[2])
+	{
+		printf("%s\n", "on passe par ici");
 		quotes_to_args(&data);
+	}
 	else
 	{
 		x = 1;
