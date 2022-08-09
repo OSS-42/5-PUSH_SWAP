@@ -6,11 +6,25 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/04 16:10:35 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/09 17:48:30 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	from_a_to_i(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (x < data->nbr_args)
+	{
+		*data->args[x] = ft_atoi(data->args[x]);
+		printf("%s%x : %u\n", "arg#", x, *data->args[x]);
+		x++;
+	}
+// erreur avec ./push_swap "1 3 4 -2" et sans quotes.
+}
 
 static void	check_doubles(t_vault *data)
 {
@@ -24,7 +38,7 @@ static void	check_doubles(t_vault *data)
 		while (y < data->nbr_args)
 		{
 			if (strncmp(data->args[x], data->args[y], data->nbr_args) == 0)
-				data->error_code = 4;
+				data->error_code = 2;
 			y++;
 		}
 		x++;
@@ -33,7 +47,7 @@ static void	check_doubles(t_vault *data)
 	return ;
 }
 
-static void	check_args(t_vault *data)
+static int	check_args(t_vault *data)
 {
 	unsigned int	x;
 	int	y;
@@ -46,33 +60,42 @@ static void	check_args(t_vault *data)
 		{
 			if ((data->args[x][y] < 48 || data->args[x][y] > 57)
 				&& data->args[x][y] != 43 && data->args[x][y] != 45)
-				data->error_code = 2;
+				data->error_code = 1;
 			y++;
 		}
 		x++;
 	}
 	errors(data);
+	from_a_to_i(data);
+	if (data->nbr_args == 1)
+// return a revoir
+		return ((int)data->args[1]);
 	if (data->nbr_args > 1)
 		check_doubles(data);
-	return ;
+	return (0);
 }
 
-static void	quotes_to_args(t_vault *data)
+static int	quotes_to_args(t_vault *data, char **argv)
 {
-	data->args = ft_split(*data->args, ' ');
-	while (data->args[data->nbr_args])
+	int	x;
+
+	x = 0;
+	data->args = ft_split(argv[1], ' ');
+	while (data->args[x++])
 		data->nbr_args++;
-	if (data->nbr_args == 1)
-		data->error_code = 1;
-	errors(data);
 	check_args(data);
-	return ;
+// erreur avec ./push_swap "1 3 4 -2"
+	errors(data);
+//	from_a_to_i(data);
+	if (data->nbr_args == 1)
+		return (*data->args[1]);
+	return (0);
 }
 
 /*	
 	trouver le nombre le plus petits de coups pour trier A.
 	tips :
-	par groupe
+	par groupes
 	B trié du plus grand au plus petit
 	A trié du plus petit au plus grand
 */
@@ -80,46 +103,24 @@ static void	quotes_to_args(t_vault *data)
 int	main(int argc, char **argv)
 {
 	t_vault	data;
-	int		x;
-	int	boucle;
 
 	data.error_code = 0;
 	data.nbr_args = 0;
 	if (argc == 1)
 		return (0);
-	data.args = malloc(sizeof(char *) * argc);
-
-	data.args = &argv[1];
-	boucle = 0;
-	while (boucle < argc)
+	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
-		printf("argv #%d: %s\n", boucle + 1, argv[boucle + 1]);
-		printf("data.args : %s\n", data.args[boucle]);
-		boucle++;
+		data.args = malloc(sizeof(char *) * argc);
+		data.args = &argv[1];
+		data.nbr_args = argc - 1;
+		printf("%s %u\n", "1.nbr args :", data.nbr_args);
+		check_args(&data);
 	}
-	check_args(&data);
-
-	/* 
-	a ce point tout est traite comme une string.
-	objectif est de parser l'argument seul ou multiple
-	*/
-
-	if (argc > 2 && !data.args[2])
+	else 
 	{
-		printf("%s\n", "on passe par ici");
-		quotes_to_args(&data);
+//		data.args = &argv[1];
+		quotes_to_args(&data, argv);
 	}
-	else
-	{
-		x = 1;
-		while (x < argc)
-		{
-			data.args[x - 1] = argv[x];
-			data.nbr_args++;
-			x++;
-		}
-	}
-	check_args(&data);
 	return (0);
 }
 
