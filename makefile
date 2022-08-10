@@ -21,7 +21,8 @@ NO_OF_FILES := $(words $(wildcard *.c))
 
 #****SOURCES****
 SRC = push_swap.c\
-	  push_swap_utils.c
+	  push_swap_utils.c\
+	  indexing_numbers.c
 
 #SRC_BONUS = \
 
