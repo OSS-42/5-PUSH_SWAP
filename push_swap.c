@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 09:48:23 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/10 09:53:12 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	from_a_to_i(t_vault *data)
 	unsigned int	x;
 
 	x = 0;
-	data->args_int = malloc(sizeof(long *) * data->nbr_args);
+	data->stack_a = malloc(sizeof(long *) * data->nbr_args);
 	while (x < data->nbr_args)
 	{
 		printf("%s%x : %s\n", "avant arg#", x, data->args[x]);
-		data->args_int[x] = ft_atolong(data->args[x]);
-		printf("%s%x : %ld\n", "apres arg#", x, data->args_int[x]);
-		if (data->args_int[x] > INT_MAX || data->args_int[x] < INT_MIN)
+		data->stack_a[x] = ft_atolong(data->args[x]);
+		printf("%s%x : %ld\n", "apres arg#", x, data->stack_a[x]);
+		if (data->stack_a[x] > INT_MAX || data->stack_a[x] < INT_MIN)
 			data->error_code = 3;
 		x++;
 	}
@@ -72,7 +72,7 @@ static int	check_args(t_vault *data)
 	errors(data);
 	from_a_to_i(data);
 	if (data->nbr_args == 1)
-		return (data->args_int[1]);
+		return (data->stack_a[1]);
 	if (data->nbr_args > 1)
 		check_doubles(data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 09:02:19 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/10 09:53:36 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ typedef struct s_vault
 {
 	int				error_code;
 	char			**args;
-	long			*args_int;
+	long			*stack_a;
+	long			*stack_b;
 	unsigned int	nbr_args;
 }	t_vault;
 
