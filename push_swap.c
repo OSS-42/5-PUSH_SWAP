@@ -6,13 +6,13 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 11:18:21 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/10 15:44:44 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	from_a_to_i(t_vault *data)
+static void	from_a_to_long(t_vault *data)
 {
 	unsigned int	x;
 
@@ -70,7 +70,7 @@ static int	check_args(t_vault *data)
 		x++;
 	}
 	errors(data);
-	from_a_to_i(data);
+	from_a_to_long(data);
 	if (data->nbr_args == 1)
 		return (data->args_int[1]);
 	if (data->nbr_args > 1)

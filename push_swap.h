@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 11:44:12 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/10 14:55:25 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ typedef struct s_vault
 	int				error_code;
 	char			**args;
 	long			*args_int;
-	unsigned int	**index;
+	unsigned int	*switches;
+	unsigned int	index;
+	unsigned int	position;
 	long			min;
 	unsigned int	*stack_a;
 	unsigned int	nbr_args;
