@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:42:13 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/09 17:18:02 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/10 09:14:38 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	errors(t_vault *data)
 		printf("%s\n%s\n", "Error", "Paramètres non valides (lettres)");
 	else if (data->error_code == 2)
 		printf("%s\n%s\n", "Error", "Il y a des doublons");
+	else if (data->error_code == 3)
+		printf("%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
 	exit (0);
 }
 

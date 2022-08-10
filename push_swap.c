@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/09 17:48:30 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/10 09:48:23 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,17 @@ static void	from_a_to_i(t_vault *data)
 	unsigned int	x;
 
 	x = 0;
+	data->args_int = malloc(sizeof(long *) * data->nbr_args);
 	while (x < data->nbr_args)
 	{
-		*data->args[x] = ft_atoi(data->args[x]);
-		printf("%s%x : %u\n", "arg#", x, *data->args[x]);
+		printf("%s%x : %s\n", "avant arg#", x, data->args[x]);
+		data->args_int[x] = ft_atolong(data->args[x]);
+		printf("%s%x : %ld\n", "apres arg#", x, data->args_int[x]);
+		if (data->args_int[x] > INT_MAX || data->args_int[x] < INT_MIN)
+			data->error_code = 3;
 		x++;
 	}
-// erreur avec ./push_swap "1 3 4 -2" et sans quotes.
+	errors(data);
 }
 
 static void	check_doubles(t_vault *data)
@@ -68,8 +72,7 @@ static int	check_args(t_vault *data)
 	errors(data);
 	from_a_to_i(data);
 	if (data->nbr_args == 1)
-// return a revoir
-		return ((int)data->args[1]);
+		return (data->args_int[1]);
 	if (data->nbr_args > 1)
 		check_doubles(data);
 	return (0);
@@ -84,9 +87,7 @@ static int	quotes_to_args(t_vault *data, char **argv)
 	while (data->args[x++])
 		data->nbr_args++;
 	check_args(data);
-// erreur avec ./push_swap "1 3 4 -2"
 	errors(data);
-//	from_a_to_i(data);
 	if (data->nbr_args == 1)
 		return (*data->args[1]);
 	return (0);
@@ -106,10 +107,11 @@ int	main(int argc, char **argv)
 
 	data.error_code = 0;
 	data.nbr_args = 0;
-	if (argc == 1)
+	if (argc == 1 || !*argv[1])
 		return (0);
 	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
+		printf("%s %u\n", "0.nbr args :", data.nbr_args);
 		data.args = malloc(sizeof(char *) * argc);
 		data.args = &argv[1];
 		data.nbr_args = argc - 1;
@@ -118,7 +120,6 @@ int	main(int argc, char **argv)
 	}
 	else 
 	{
-//		data.args = &argv[1];
 		quotes_to_args(&data, argv);
 	}
 	return (0);
