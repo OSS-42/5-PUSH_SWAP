@@ -35,9 +35,11 @@ typedef struct s_vault
 	long			*args_int;
 	unsigned int	*switches;
 	unsigned int	index;
+	unsigned int	index_max;
 	unsigned int	position;
 	long			min;
 	unsigned int	*stack_a;
+	unsigned int	*stack_b;
 	unsigned int	nbr_args;
 }	t_vault;
 
@@ -45,5 +47,17 @@ typedef struct s_vault
 
 void	errors(t_vault *data);
 void	indexing_numbers(t_vault *data);
+void	sorting_numbers(t_vault *data);
+void	push_to_a(t_vault *data);
+void	push_to_b(t_vault *data);
+void	rotate_to_last_b(t_vault *data);
+void	rotate_to_first_a(t_vault *data);
+void	rotate_to_first_b(t_vault *data);
+void	rotate_to_last_a(t_vault *data);
+void	swap_top_a(t_vault *data);
+void	swap_top_b(t_vault *data);
+void	both_swap_top(t_vault *data);
+void	both_rotate_to_first(t_vault *data);
+void	both_rotate_to_last(t_vault *data);
 
 #endif

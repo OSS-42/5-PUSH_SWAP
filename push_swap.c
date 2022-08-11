@@ -18,6 +18,8 @@ static void	from_a_to_long(t_vault *data)
 
 	x = 0;
 	data->args_int = malloc(sizeof(long *) * data->nbr_args);
+	if (!data->args_int)
+		return ;
 	while (x < data->nbr_args)
 	{
 		printf("%s%x : %s\n", "avant arg#", x, data->args[x]);
@@ -112,6 +114,8 @@ int	main(int argc, char **argv)
 	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
 		data.args = malloc(sizeof(char *) * argc);
+		if (!data.args)
+			return (0);
 		data.args = &argv[1];
 		data.nbr_args = argc - 1;
 		printf("%s %u\n", "1.nbr args :", data.nbr_args);
@@ -121,8 +125,7 @@ int	main(int argc, char **argv)
 	{
 		quotes_to_args(&data, argv);
 	}
-	printf("%s\n", "rendu-là, tout est bon !");
+	printf("%s\n", "rendu-là, on peut commencer l'indexation !");
 	indexing_numbers(&data);
 	return (0);
 }
-
