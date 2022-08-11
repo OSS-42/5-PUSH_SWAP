@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:03:54 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 22:03:54 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/11 15:49:12 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,57 @@
 envisager d<utiliser des algos differents selon la quantite de nombres
 */
 
-static int	check_order(t_vault *data)
+static int	check_order_b(t_vault *data)
 {
 	unsigned int	x;
+	
 	x = 0;
-	while (x < data->index)
+	printf("%s\n", "checkons l'ordre");
+	printf("%s%d\n", "data->index = : ", data->index);
+	while (x < data->index - 1)
 	{
-		if (data->stack_a[x + 1] != (data->stack_a[x] + 1))
+		printf("%s%d\n", "stack position : ", x);
+		printf("%s%d\n", "index : ", data->stack_b[x]);
+		if (data->stack_b[x] > data->stack_b[x + 1])
+		{
+			printf("%d%s%d\n", data->stack_b[x], " est plus grand que ", data->stack_b[x + 1]);
+			printf("%s\n", "hello");
 			return (1);
+		}
 		else
 			x++;
 	}
 	return (0);
 }
 
+static int	check_order_a(t_vault *data)
+{
+	unsigned int	x;
+	
+	x = 0;
+	printf("%s\n", "checkons l'ordre");
+	printf("%s%d\n", "data->index = : ", data->index);
+	while (x < data->index - 1)
+	{
+		printf("%s%d\n", "stack position : ", x);
+		printf("%s%d\n", "index : ", data->stack_a[x]);
+		if (data->stack_a[x] > data->stack_a[x + 1])
+		{
+			printf("%d%s%d\n", data->stack_a[x], " est plus grand que ", data->stack_a[x + 1]);
+			return (1);
+		}
+		else
+			x++;
+	}
+	return (0);
+}
+/*
 static void	small_sorting(t_vault *data)
 {
 	unsigned int	x;
 
 	x = 0;
-	while (x <= data->index)
+	while (x < data->index - 1)
 	{
 		if (data->stack_a[x] < data->index / 2)
 			push_to_b(data);
@@ -44,13 +75,23 @@ static void	small_sorting(t_vault *data)
 		
 	}
 }
-
+*/
 void	sorting_numbers(t_vault *data)
 {
-	if (data->index > 10)
-		small_sorting(data);
-	else
+	data->index -= 1;
+	if (check_order_a(data) == 0 && check_order_b(data) == 0)
+	{
+		printf("%s\n", "c'est déjà trié !");
+		return ;
+	}
+	printf("%s\n", "liste non triée, commencons...");
+	data->stack_b = ft_calloc(data->index, 1);
+	stacks_visu(data);
+	//if (data->index < 10)
+	//	small_sorting(data);
+/*	else
 		normal_sorting(data);
+*/
 }
 
 /*

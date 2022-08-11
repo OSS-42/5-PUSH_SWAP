@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 15:44:44 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:11:55 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	check_doubles(t_vault *data)
 static int	check_args(t_vault *data)
 {
 	unsigned int	x;
-	int	y;
+	int				y;
 
 	x = 0;
 	while (x < data->nbr_args)
@@ -121,7 +121,7 @@ int	main(int argc, char **argv)
 		printf("%s %u\n", "1.nbr args :", data.nbr_args);
 		check_args(&data);
 	}
-	else 
+	else
 	{
 		quotes_to_args(&data, argv);
 	}

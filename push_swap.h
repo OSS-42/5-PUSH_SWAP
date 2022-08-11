@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/10 14:55:25 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:55:43 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	both_rotate_to_first(t_vault *data);
 void	both_rotate_to_last(t_vault *data);
 int		check_qty_stack_a(t_vault *data);
 int		check_qty_stack_b(t_vault *data);
+void	stacks_visu(t_vault *data);
 
 #endif
