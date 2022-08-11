@@ -39,7 +39,10 @@ typedef struct s_vault
 	unsigned int	position;
 	long			min;
 	unsigned int	*stack_a;
+	unsigned int	qty_stack_a;
 	unsigned int	*stack_b;
+	unsigned int	qty_stack_b;
+	unsigned int	nbr_temp;
 	unsigned int	nbr_args;
 }	t_vault;
 
@@ -59,5 +62,7 @@ void	swap_top_b(t_vault *data);
 void	both_swap_top(t_vault *data);
 void	both_rotate_to_first(t_vault *data);
 void	both_rotate_to_last(t_vault *data);
+int		check_qty_stack_a(t_vault *data);
+int		check_qty_stack_b(t_vault *data);
 
 #endif
