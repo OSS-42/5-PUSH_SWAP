@@ -15,13 +15,13 @@
 /*
 envisager d<utiliser des algos differents selon la quantite de nombres
 */
-
+/*
 static int	check_order_b(t_vault *data)
 {
 	unsigned int	x;
 	
 	x = 0;
-	printf("%s\n", "checkons l'ordre");
+	printf("%s\n", "checkons l'ordre de b");
 	printf("%s%d\n", "data->index = : ", data->index);
 	while (x < data->index - 1)
 	{
@@ -38,13 +38,13 @@ static int	check_order_b(t_vault *data)
 	}
 	return (0);
 }
-
+*/
 static int	check_order_a(t_vault *data)
 {
 	unsigned int	x;
 	
 	x = 0;
-	printf("%s\n", "checkons l'ordre");
+	printf("%s\n", "checkons l'ordre de a");
 	printf("%s%d\n", "data->index = : ", data->index);
 	while (x < data->index - 1)
 	{
@@ -60,38 +60,41 @@ static int	check_order_a(t_vault *data)
 	}
 	return (0);
 }
-/*
-static void	small_sorting(t_vault *data)
+
+void	small_sorting(t_vault *data)
 {
 	unsigned int	x;
 
 	x = 0;
+	if (data->stack_a[x] == 0)
+		x++;
 	while (x < data->index - 1)
 	{
 		if (data->stack_a[x] < data->index / 2)
 			push_to_b(data);
-		else if (data->stack_a[x] > data->index /2)
-			rotate_to_last_a(data);
-		
+		else if (data->stack_a[x] > data->index / 2)
+			rotate_to_last_a(data);	
+		x++;
 	}
 }
-*/
+
 void	sorting_numbers(t_vault *data)
 {
 	data->index -= 1;
-	if (check_order_a(data) == 0 && check_order_b(data) == 0)
+	if (check_order_a(data) == 0)
 	{
 		printf("%s\n", "c'est déjà trié !");
 		return ;
 	}
 	printf("%s\n", "liste non triée, commencons...");
 	data->stack_b = ft_calloc(data->index, 1);
-	stacks_visu(data);
-	//if (data->index < 10)
-	//	small_sorting(data);
-/*	else
-		normal_sorting(data);
-*/
+	stacks_visu(data); // debug visuel
+	if (data->index < 10)
+		small_sorting(data);
+	else
+		return ;
+		//normal_sorting(data);
+
 }
 
 /*

@@ -16,43 +16,45 @@ void	push_to_a(t_vault *data)
 {
 	unsigned int	x;
 	unsigned int	y;
-	unsigned int	z;
 
+	check_qty_stack_a(data);
+	if (data->qty_stack_a == data->index)
+		return ;
+	check_qty_stack_b(data);
+	if (data->qty_stack_b == 0)
+		return ;
 	y = (data->index - 1) - data->qty_stack_a;
-	z = (data->index - 1) - data->qty_stack_b;
 	x = 0;
-	while (data->stack_a[x] == 0)
+	while (data->stack_b[x] == 0)
 		x++;
-	data->stack_b[y] = data->stack_a[x];
-	data->stack_a[x] = 0;
+	data->stack_a[y] = data->stack_b[x];
+	data->stack_b[x] = 0;
 	printf("%s\n", "pa");
+	stacks_visu(data);  // pour debug visuel
+	small_sorting(data);
+	return ;
 }
 
 void	push_to_b(t_vault *data)
 {
 	unsigned int	x;
 	unsigned int	y;
-	unsigned int	z;
 
+	check_qty_stack_b(data);
+	if (data->qty_stack_b == data->index)
+		return ;
+	check_qty_stack_a(data);
+	if (data->qty_stack_a == 0)
+		return ;
 	y = (data->index - 1) - data->qty_stack_b;
-	z = (data->index - 1) - data->qty_stack_a;
 	x = 0;
-	while (data->stack_b[x] == 0)
+	while (data->stack_a[x] == 0)
 		x++;
-	data->stack_a[y] = data->stack_b[x];
-	data->stack_b[x] = 0;
+	data->stack_b[y] = data->stack_a[x];
+	data->stack_a[x] = 0;
 	printf("%s\n", "pb");
+	stacks_visu(data); // pour debug visuel
+	small_sorting(data);
+	return ;
 }
 
-void	stacks_visu(t_vault *data)
-{
-	unsigned int	x;
-
-	x = 0;
-	printf("%s%s%s\n", "A", "	", "B");
-	while (x < data->index)
-	{
-		printf("%d%s%d\n", data->stack_a[x], "	", data->stack_b[x]);
-		x++;
-	}
-}

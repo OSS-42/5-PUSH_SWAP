@@ -24,3 +24,17 @@ void	errors(t_vault *data)
 		printf("%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
 	exit (0);
 }
+
+void	stacks_visu(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	printf("%s%s%s\n", "A", "	", "B");
+	while (x < data->index)
+	{
+		printf("%d%s%d\n", data->stack_a[x], "	", data->stack_b[x]);
+		x++;
+	}
+	return ;
+}

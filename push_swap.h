@@ -62,8 +62,9 @@ void	swap_top_b(t_vault *data);
 void	both_swap_top(t_vault *data);
 void	both_rotate_to_first(t_vault *data);
 void	both_rotate_to_last(t_vault *data);
-int		check_qty_stack_a(t_vault *data);
-int		check_qty_stack_b(t_vault *data);
-void	stacks_visu(t_vault *data);
+void	check_qty_stack_a(t_vault *data);
+void	check_qty_stack_b(t_vault *data);
+void	stacks_visu(t_vault *data); //pour debug
+void	small_sorting(t_vault *data);
 
 #endif
