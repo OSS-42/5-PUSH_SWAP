@@ -25,7 +25,6 @@ void	check_qty_stack_b(t_vault *data)
 		data->qty_stack_b++;
 		x++;
 	}
-
 }
 
 void	check_qty_stack_a(t_vault *data)
@@ -59,6 +58,7 @@ void	swap_top_a(t_vault *data)
 		data->nbr_temp = data->stack_a[x];
 		data->stack_a[x] = data->stack_a[x + 1];
 		data->stack_a[x + 1] = data->nbr_temp;
+		data->moves++;
 		printf("%s\n", "sa");
 		stacks_visu(data); // pour debug visuel
 	}
@@ -80,6 +80,7 @@ void	swap_top_b(t_vault *data)
 		data->nbr_temp = data->stack_b[x];
 		data->stack_b[x] = data->stack_b[x + 1];
 		data->stack_b[x + 1] = data->nbr_temp;
+		data->moves++;
 		printf("%s\n", "sb");
 		stacks_visu(data); // pour debug visuel
 	}
@@ -111,6 +112,7 @@ void	both_swap_top(t_vault *data)
 	}
 	else
 		return ;
+	data->moves++;
 	printf("%s\n", "ss");
 	stacks_visu(data); // pour debug visuel
 }

@@ -12,7 +12,11 @@
 
 #include "push_swap.h"
 
-void	errors(t_vault *data)
+/*
+attention, Error à envoyer sur stdout et le reste sur stderr
+*/
+
+void	errors(t_vault *data) // a revoir
 {
 	if (data->error_code == 0)
 		return ;
@@ -38,7 +42,7 @@ void	check_index(t_vault *data) // pour debug
 	printf("%s\n", "rendu la, on peut commencer le triage !");
 }
 
-void	stacks_visu(t_vault *data)
+void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
 
@@ -49,5 +53,20 @@ void	stacks_visu(t_vault *data)
 		printf("%d%s%d\n", data->stack_a[x], "	", data->stack_b[x]);
 		x++;
 	}
+	printf("%s%d\n", "move #", data->moves);
 	return ;
+}
+
+void	check_difficulty(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	data->difficulty = 0;
+	while (x < data->index_max)
+	{
+		if (data->stack_a[x] > data->stack_a[x + 1])
+			data->difficulty++;
+		x++;
+	}
 }

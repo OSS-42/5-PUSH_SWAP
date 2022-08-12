@@ -38,6 +38,7 @@ void	both_rotate_to_first(t_vault *data)
 		data->stack_b[x - 1] = data->nbr_temp;
 		x--;
 	}
+	data->moves++;
 	printf("%s\n", "rrr");
 }
 
@@ -67,5 +68,6 @@ void	both_rotate_to_last(t_vault *data)
 		data->stack_b[x + 1] = data->nbr_temp;
 		x++;
 	}
+	data->moves++;
 	printf("%s\n", "rr");
 }

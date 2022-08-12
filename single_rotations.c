@@ -34,6 +34,7 @@ void	rotate_to_last_a(t_vault *data)
 			data->stack_a[x + 1] = data->nbr_temp;
 			x++;
 		}
+		data->moves++;
 		printf("%s\n", "ra");
 		stacks_visu(data); // pour debug visuel
 	}
@@ -57,6 +58,7 @@ void	rotate_to_first_a(t_vault *data)
 			data->stack_a[x - 1] = data->nbr_temp;
 			x--;
 		}
+		data->moves++;
 		printf("%s\n", "rra");
 		stacks_visu(data); // pour debug visuel
 	}
@@ -80,6 +82,7 @@ void	rotate_to_last_b(t_vault *data)
 			data->stack_b[x + 1] = data->nbr_temp;
 			x++;
 		}
+		data->moves++;
 		printf("%s\n", "rb");
 		stacks_visu(data); // pour debug visuel
 	}
@@ -103,6 +106,7 @@ void	rotate_to_first_b(t_vault *data)
 			data->stack_b[x - 1] = data->nbr_temp;
 			x--;
 		}
+		data->moves++;
 		printf("%s\n", "rrb");
 		stacks_visu(data); // pour debug visuel
 	}

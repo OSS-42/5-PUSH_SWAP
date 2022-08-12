@@ -29,6 +29,7 @@ void	push_to_a(t_vault *data)
 		x++;
 	data->stack_a[y] = data->stack_b[x];
 	data->stack_b[x] = 0;
+	data->moves++;
 	printf("%s\n", "pa");
 	stacks_visu(data);  // pour debug visuel
 	small_sorting(data);
@@ -52,6 +53,7 @@ void	push_to_b(t_vault *data)
 		x++;
 	data->stack_b[y] = data->stack_a[x];
 	data->stack_a[x] = 0;
+	data->moves++;
 	printf("%s\n", "pb");
 	stacks_visu(data); // pour debug visuel
 	small_sorting(data);
