@@ -13,22 +13,9 @@
 #include "push_swap.h"
 
 /*
-chaque nombre doit obtenir son index par rapport aux autres nombres.
-Il suffit ensuite de remettre l'index en ordre.
+Chaque nombre doit obtenir son index par rapport aux autres nombres.
+L'indexation start à 1 pour que 0 = faux 'null' pendant le triage
 */
-
-static void	check_index(t_vault *data)
-{
-	unsigned int	boucle;
-
-	boucle = 0;
-	while (boucle < data->nbr_args)
-	{
-		printf("%s%d%s%d%s%ld\n", "stack_a#", boucle, " : ", data->stack_a[boucle], " - arg = ", data->args_int[boucle]);
-		boucle++;
-	}
-	printf("%s\n", "rendu la, on peut commencer le triage !");
-}
 
 void	indexing_numbers(t_vault *data)
 {
@@ -41,15 +28,12 @@ void	indexing_numbers(t_vault *data)
 	data->position = 0;
 	data->switches = ft_calloc(data->nbr_args, 1);
 	data->stack_a = ft_calloc(data->nbr_args, 1);
-	data->min = data->args_int[x];
-	x = 1;
-	printf("%s%d\n", "nbr args :", data->nbr_args);
+	data->min = INT_MAX;
+	printf("%s%d\n", "2.nbr args :", data->nbr_args);
 	while (y < data->nbr_args)
 	{
 		while (x < data->nbr_args)
 		{
-			if (data->switches[x] != 0)
-				x++;
 			if (data->min > data->args_int[x] && data->switches[x] == 0)
 			{
 				data->position = x;
@@ -68,5 +52,7 @@ void	indexing_numbers(t_vault *data)
 		y++;
 	}
 	check_index(data); //debug visualisation
+	data->index_max = data->index - 1;
+	data->is_in_order = 0;
 	sorting_numbers(data);
 }

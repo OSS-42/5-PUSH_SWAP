@@ -44,6 +44,7 @@ typedef struct s_vault
 	unsigned int	qty_stack_b;
 	unsigned int	nbr_temp;
 	unsigned int	nbr_args;
+	int				is_in_order;
 }	t_vault;
 
 /*****Fonctions*****/
@@ -64,7 +65,10 @@ void	both_rotate_to_first(t_vault *data);
 void	both_rotate_to_last(t_vault *data);
 void	check_qty_stack_a(t_vault *data);
 void	check_qty_stack_b(t_vault *data);
-void	stacks_visu(t_vault *data); //pour debug
 void	small_sorting(t_vault *data);
+void	stacks_visu(t_vault *data); //pour debug
+void	check_index(t_vault *data); //pour debug
+void	check_order_a(t_vault *data);
+void	sort_3(t_vault *data);
 
 #endif

@@ -20,7 +20,7 @@ void	check_qty_stack_b(t_vault *data)
 	data->qty_stack_b = 0;
 	while (data->stack_b[x] == 0)
 		x++;
-	while (x < data->index)
+	while (x < data->index_max)
 	{
 		data->qty_stack_b++;
 		x++;
@@ -36,7 +36,7 @@ void	check_qty_stack_a(t_vault *data)
 	data->qty_stack_a = 0;
 	while (data->stack_a[x] == 0)
 		x++;
-	while (x < data->index)
+	while (x < data->index_max)
 	{
 		data->qty_stack_a++;
 		x++;
@@ -49,16 +49,18 @@ void	swap_top_a(t_vault *data)
 
 	x = 0;
 	check_qty_stack_a(data);
-	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
+	if (data->qty_stack_a <= 1)
 		return ;
 	else
 	{
-		while (data->stack_a[x] != 0)
+		printf("%s\n", "Swap top A");
+		while (data->stack_a[x] == 0)
 			x++;
 		data->nbr_temp = data->stack_a[x];
 		data->stack_a[x] = data->stack_a[x + 1];
 		data->stack_a[x + 1] = data->nbr_temp;
 		printf("%s\n", "sa");
+		stacks_visu(data); // pour debug visuel
 	}
 }
 
@@ -72,12 +74,14 @@ void	swap_top_b(t_vault *data)
 		return ;
 	else
 	{
+		printf("%s\n", "Swap top B");
 		while (data->stack_b[x] != 0)
 			x++;
 		data->nbr_temp = data->stack_b[x];
 		data->stack_b[x] = data->stack_b[x + 1];
 		data->stack_b[x + 1] = data->nbr_temp;
 		printf("%s\n", "sb");
+		stacks_visu(data); // pour debug visuel
 	}
 }
 
@@ -87,6 +91,7 @@ void	both_swap_top(t_vault *data)
 
 	x = 0;
 	check_qty_stack_a(data);
+	printf("%s\n", "Swap top A et B");
 	if (data->qty_stack_a > 1)
 	{
 		while (data->stack_a[x] != 0)
@@ -107,4 +112,5 @@ void	both_swap_top(t_vault *data)
 	else
 		return ;
 	printf("%s\n", "ss");
+	stacks_visu(data); // pour debug visuel
 }

@@ -64,6 +64,9 @@ static int	check_args(t_vault *data)
 		y = 0;
 		while (data->args[x][y])
 		{
+			if (data->args[x][y] == 43 || data->args[x][y] == 45)
+				if (data->args[x][y + 1] < 48 || data->args[x][y + 1] > 57)
+					data->error_code = 1;
 			if ((data->args[x][y] < 48 || data->args[x][y] > 57)
 				&& data->args[x][y] != 43 && data->args[x][y] != 45)
 				data->error_code = 1;

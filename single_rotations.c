@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 /*
-Attention au data->index (commence à 1) et aux positions d'array (data->index -1)
+Attention au data->index (commence à 1) et aux positions d'array (data->index_max)
 */
 
 void	rotate_to_last_a(t_vault *data)
@@ -26,7 +26,8 @@ void	rotate_to_last_a(t_vault *data)
 		return ;
 	else
 	{
-		while (x < data->index - 1 && data->stack_a[x] != 0)
+		printf("%s\n", "rotation to last dans A");
+		while (x < data->index_max - 1 && data->stack_a[x] != 0)
 		{
 			data->nbr_temp = data->stack_a[x];
 			data->stack_a[x] = data->stack_a[x + 1];
@@ -42,12 +43,13 @@ void	rotate_to_first_a(t_vault *data)
 {
 	unsigned int	x;
 
-	x = data->index - 1;
+	x = data->index_max;
 	check_qty_stack_a(data);
 	if (data->qty_stack_a <= 1)
 		return ;
 	else
 	{
+		printf("%s\n", "rotation to first dans A");
 		while (x > 0 && data->stack_a[x] != 0)
 		{
 			data->nbr_temp = data->stack_a[x];
@@ -70,7 +72,8 @@ void	rotate_to_last_b(t_vault *data)
 		return ;
 	else
 	{
-		while (x < data->index - 1 && data->stack_b[x] != 0)
+		printf("%s\n", "rotation to last dans B");
+		while (x < data->index_max && data->stack_b[x] != 0)
 		{
 			data->nbr_temp = data->stack_b[x];
 			data->stack_b[x] = data->stack_b[x + 1];
@@ -86,12 +89,13 @@ void	rotate_to_first_b(t_vault *data)
 {
 	unsigned int	x;
 
-	x = data->index - 1;
+	x = data->index_max;
 	check_qty_stack_b(data);
 	if (data->qty_stack_b <= 1)
 		return ;
 	else
 	{
+		printf("%s\n", "rotation to first dans B");
 		while (x > 0 && data->stack_b[x] != 0)
 		{
 			data->nbr_temp = data->stack_b[x];
