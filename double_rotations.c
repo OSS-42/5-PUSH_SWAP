@@ -16,7 +16,7 @@ void	both_rotate_to_first(t_vault *data)
 {
 	unsigned int	x;
 
-	x = data->index_max;
+	x = data->index_max - 1;
 	check_qty_stack_a(data);
 	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
 		return ;
@@ -30,7 +30,7 @@ void	both_rotate_to_first(t_vault *data)
 	check_qty_stack_a(data);
 	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
 		return ;
-	x = data->index_max;
+	x = data->index_max - 1;
 	while (x > 0 && data->stack_b[x] != 0)
 	{
 		data->nbr_temp = data->stack_b[x];

@@ -43,7 +43,7 @@ void	rotate_to_first_a(t_vault *data)
 {
 	unsigned int	x;
 
-	x = data->index_max;
+	x = data->index_max - 1;
 	check_qty_stack_a(data);
 	if (data->qty_stack_a <= 1)
 		return ;
@@ -89,7 +89,7 @@ void	rotate_to_first_b(t_vault *data)
 {
 	unsigned int	x;
 
-	x = data->index_max;
+	x = data->index_max - 1;
 	check_qty_stack_b(data);
 	if (data->qty_stack_b <= 1)
 		return ;
