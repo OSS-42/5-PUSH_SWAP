@@ -53,6 +53,6 @@ void	indexing_numbers(t_vault *data)
 	}
 	check_index(data); //debug visualisation
 	data->index_max = data->index - 1;
-	data->is_in_order = 0;
+	data->is_in_order_a = 0;
 	sorting_numbers(data);
 }

@@ -53,7 +53,7 @@ void	stacks_visu(t_vault *data) // pour debug
 		printf("%d%s%d\n", data->stack_a[x], "	", data->stack_b[x]);
 		x++;
 	}
-	printf("%s%d\n", "move #", data->moves);
+	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
 }
 

@@ -20,9 +20,9 @@ void	check_order_b(t_vault *data)
 	unsigned int	x;
 	
 	x = 0;
-	printf("%s\n", "checkons l'ordre de b");
+	printf("%s\n", "checkons l'ordre croissant de B");
 	printf("%s%d\n", "index max = ", data->index_max);
-	while (x < data->stack_b[x] == 0)
+	while (data->stack_b[x] == 0)
 		x++;
 	while (x < data->index_max - 1)
 	{
@@ -31,7 +31,7 @@ void	check_order_b(t_vault *data)
 		printf("%s%d\n", "next index : ", data->stack_b[x + 1]);
 		if (data->stack_b[x] > data->stack_b[x + 1])
 		{
-			printf("%d%s%d\n", data->stack_b[x], " est plus grand que ", data->stack_b[x + 1]);
+			printf("%s\n", "B est dans le désordre");
 			data->is_in_order_b = -1;
 			return ;
 		}
@@ -39,7 +39,7 @@ void	check_order_b(t_vault *data)
 			x++;
 	}
 	data->is_in_order_b = 1;
-	printf("%s\n", "c'est déjà trié !");
+	printf("%s\n", "B est en ordre croissant !");
 	return ;
 }
 
@@ -48,9 +48,10 @@ void	check_order_a(t_vault *data)
 	unsigned int	x;
 	
 	x = 0;
-	printf("%s\n", "checkons l'ordre de a");
+	printf("%s\n", "checkons l'ordre croissant de A");
 	printf("%s%d\n", "index max = ", data->index_max);
-	while (x < data->stack_a[x] == 0)
+	stacks_visu(data);
+	while (data->stack_a[x] == 0)
 		x++;
 	while (x < data->index_max - 1)
 	{
@@ -59,7 +60,7 @@ void	check_order_a(t_vault *data)
 		printf("%s%d\n", "next index : ", data->stack_a[x + 1]);
 		if (data->stack_a[x] > data->stack_a[x + 1])
 		{
-			printf("%d%s%d\n", data->stack_a[x], " est plus grand que ", data->stack_a[x + 1]);
+			printf("%s\n", "A est dans le désordre");
 			data->is_in_order_a = -1;
 			data->difficulty = x;
 			return ;
@@ -68,7 +69,7 @@ void	check_order_a(t_vault *data)
 			x++;
 	}
 	data->is_in_order_a = 1;
-	printf("%s\n", "c'est déjà trié !");
+	printf("%s\n", "A est en ordre croissant !");
 	return ;
 }
 

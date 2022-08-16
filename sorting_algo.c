@@ -77,8 +77,7 @@ void	small_sorting(t_vault *data)
 			if (data->qty_stack_b > 1)
 			{
 				check_order_b(data);
-				if (data->is_in_order_b == -1)
-
+				//if (data->is_in_order_b == -1)
 			}
 			small_sorting(data);
 		}

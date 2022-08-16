@@ -46,7 +46,7 @@ typedef struct s_vault
 	unsigned int	nbr_args;
 	int				is_in_order_a;
 	int				is_in_order_b;
-	int				moves;
+	unsigned int	moves;
 	unsigned int	difficulty;
 }	t_vault;
 
@@ -72,6 +72,7 @@ void	small_sorting(t_vault *data);
 void	stacks_visu(t_vault *data); //pour debug
 void	check_index(t_vault *data); //pour debug
 void	check_order_a(t_vault *data);
+void	check_order_b(t_vault *data);
 void	check_difficulty(t_vault *data);
 void	sort_3(t_vault *data);
 

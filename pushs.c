@@ -23,7 +23,7 @@ void	push_to_a(t_vault *data)
 	check_qty_stack_b(data);
 	if (data->qty_stack_b == 0)
 		return ;
-	y = (data->index_max) - data->qty_stack_a;
+	y = (data->index_max - 1) - data->qty_stack_a;
 	x = 0;
 	while (data->stack_b[x] == 0)
 		x++;
@@ -47,7 +47,7 @@ void	push_to_b(t_vault *data)
 	check_qty_stack_a(data);
 	if (data->qty_stack_a == 0)
 		return ;
-	y = (data->index_max) - data->qty_stack_b;
+	y = (data->index_max - 1) - data->qty_stack_b;
 	x = 0;
 	while (data->stack_a[x] == 0)
 		x++;
