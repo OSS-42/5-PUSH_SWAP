@@ -69,6 +69,7 @@ void	both_rotate_to_last(t_vault *data);
 void	check_qty_stack_a(t_vault *data);
 void	check_qty_stack_b(t_vault *data);
 void	small_sorting(t_vault *data);
+void	finish_small_sorting(t_vault *data);
 void	stacks_visu(t_vault *data); //pour debug
 void	check_index(t_vault *data); //pour debug
 void	check_order_a(t_vault *data);

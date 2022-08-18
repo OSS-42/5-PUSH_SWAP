@@ -58,28 +58,46 @@ void	small_sorting(t_vault *data)
 {
 	unsigned int	x;
 
-	while (data->moves <= data->index_max)
+	check_qty_stack_a(data);
+	while (data->qty_stack_a > 1)
 	{
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
-		if (data->stack_a[x] < data->index_max / 2)
+		if (data->stack_a[x] <= data->qty_stack_a / 2)
 		{
 			rotate_to_last_a(data);
 			check_order_a(data);
 			if (data->is_in_order_a == 1)
-				return ;
+				break ;
 			small_sorting(data);
 		}
-		else 
+		else if (data->stack_a[x] > data->qty_stack_a / 2)
 		{
 			push_to_b(data);
-			if (data->qty_stack_b > 1)
-			{
-				check_order_b(data);
-				//if (data->is_in_order_b == -1)
-			}
 			small_sorting(data);
 		}
+	}
+	finish_small_sorting(data);
+}
+
+void	finish_small_sorting(t_vault *data)
+{
+	unsigned int	y;
+	
+	check_qty_stack_b(data);
+	printf("%s%d\n", "qty B : ", data->qty_stack_b);
+	while (data->qty_stack_b > 0)
+	{
+		y = 0;
+		while (data->stack_b[y] == 0)
+			y++;
+		if (data->stack_b[y] == data->stack_a[data->index_max - 1] + 1)
+		{
+			push_to_a(data);
+			rotate_to_last_a(data);
+		}
+		else
+			rotate_to_last_b(data);
 	}
 }

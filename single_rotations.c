@@ -27,6 +27,8 @@ void	rotate_to_last_a(t_vault *data)
 	else
 	{
 		printf("%s\n", "rotation to last dans A");
+		while (data->stack_a[x] == 0)
+			x++;
 		while (x < data->index_max - 1 && data->stack_a[x] != 0)
 		{
 			data->nbr_temp = data->stack_a[x];
@@ -75,7 +77,9 @@ void	rotate_to_last_b(t_vault *data)
 	else
 	{
 		printf("%s\n", "rotation to last dans B");
-		while (x < data->index_max && data->stack_b[x] != 0)
+		while (data->stack_b[x] == 0)
+			x++;
+		while (x < data->index_max - 1 && data->stack_b[x] != 0)
 		{
 			data->nbr_temp = data->stack_b[x];
 			data->stack_b[x] = data->stack_b[x + 1];
