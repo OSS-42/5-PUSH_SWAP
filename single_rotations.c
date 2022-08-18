@@ -40,6 +40,7 @@ void	rotate_to_last_a(t_vault *data)
 		printf("%s\n", "ra");
 		stacks_visu(data); // pour debug visuel
 	}
+	return ;
 }
 
 void	rotate_to_first_a(t_vault *data)

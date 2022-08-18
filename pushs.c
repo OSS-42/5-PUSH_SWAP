@@ -32,7 +32,7 @@ void	push_to_a(t_vault *data)
 	data->moves++;
 	printf("%s\n", "pa");
 	stacks_visu(data);  // pour debug visuel
-	small_sorting(data);
+//	small_sorting(data);
 	return ;
 }
 
@@ -56,7 +56,7 @@ void	push_to_b(t_vault *data)
 	data->moves++;
 	printf("%s\n", "pb");
 	stacks_visu(data); // pour debug visuel
-	small_sorting(data);
+//	small_sorting(data);
 	return ;
 }
 

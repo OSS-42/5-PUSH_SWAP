@@ -46,6 +46,10 @@ typedef struct s_vault
 	unsigned int	nbr_args;
 	int				is_in_order_a;
 	int				is_in_order_b;
+	unsigned int	is_min_a;
+	unsigned int	is_min_b;
+	unsigned int	is_max_a;
+	unsigned int	is_max_b;	
 	unsigned int	moves;
 	unsigned int	difficulty;
 }	t_vault;
@@ -54,7 +58,7 @@ typedef struct s_vault
 
 void	errors(t_vault *data);
 void	indexing_numbers(t_vault *data);
-void	sorting_numbers(t_vault *data);
+void	algo_choice(t_vault *data);
 void	push_to_a(t_vault *data);
 void	push_to_b(t_vault *data);
 void	rotate_to_last_b(t_vault *data);
@@ -68,13 +72,18 @@ void	both_rotate_to_first(t_vault *data);
 void	both_rotate_to_last(t_vault *data);
 void	check_qty_stack_a(t_vault *data);
 void	check_qty_stack_b(t_vault *data);
-void	small_sorting(t_vault *data);
-void	finish_small_sorting(t_vault *data);
 void	stacks_visu(t_vault *data); //pour debug
 void	check_index(t_vault *data); //pour debug
 void	check_order_a(t_vault *data);
 void	check_order_b(t_vault *data);
-void	check_difficulty(t_vault *data);
-void	sort_3(t_vault *data);
+void	is_min_a(t_vault *data);
+void	is_max_a(t_vault *data);
+void	is_min_b(t_vault *data);
+void	is_max_b(t_vault *data);
+void	check_difficulty(t_vault *data); // pas utilisé
+void	sort_3_a(t_vault *data);
+void	sort_3_b(t_vault *data);
+void	sort_4_a(t_vault *data);
+void	sort_5(t_vault *data);
 
 #endif

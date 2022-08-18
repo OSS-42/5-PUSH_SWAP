@@ -70,12 +70,12 @@ void	swap_top_b(t_vault *data)
 
 	x = 0;
 	check_qty_stack_b(data);
-	if (data->qty_stack_b == 1 || data->qty_stack_b == 0)
+	if (data->qty_stack_b <= 1)
 		return ;
 	else
 	{
 		printf("%s\n", "Swap top B");
-		while (data->stack_b[x] != 0)
+		while (data->stack_b[x] == 0)
 			x++;
 		data->nbr_temp = data->stack_b[x];
 		data->stack_b[x] = data->stack_b[x + 1];

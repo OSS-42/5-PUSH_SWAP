@@ -54,5 +54,33 @@ void	indexing_numbers(t_vault *data)
 	check_index(data); //debug visualisation
 	data->index_max = data->index - 1;
 	data->is_in_order_a = 0;
-	sorting_numbers(data);
+	algo_choice(data);
+	return ;
+}
+
+void	algo_choice(t_vault *data)
+{
+	check_order_a(data);
+	if (data->is_in_order_a == 1)
+		return ;
+	printf("%s\n", "liste non triée, commencons...");
+	data->moves = 0;
+	if (data->index_max <= 3)
+		sort_3_a(data);
+	else if (data->index_max == 4)
+	{
+		data->stack_b = ft_calloc(data->index + 1, 1);
+		sort_4_a(data);
+	}
+	else if (data->index_max == 5)
+	{
+		data->stack_b = ft_calloc(data->index + 1, 1);
+		sort_5(data);
+	}
+	/*if (data->index < 10)
+	else
+		return ;
+		normal_sorting(data);
+*/
+	return ;
 }

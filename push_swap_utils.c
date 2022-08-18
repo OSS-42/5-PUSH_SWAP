@@ -57,7 +57,7 @@ void	stacks_visu(t_vault *data) // pour debug
 	return ;
 }
 
-void	check_difficulty(t_vault *data)
+void	check_difficulty(t_vault *data) //inutilisé
 {
 	unsigned int	x;
 

@@ -73,27 +73,80 @@ void	check_order_a(t_vault *data)
 	return ;
 }
 
-void	sorting_numbers(t_vault *data)
+void	is_min_a(t_vault *data)
 {
-	check_order_a(data);
-	if (data->is_in_order_a == 1)
-		return ;
-	printf("%s\n", "liste non triée, commencons...");
-	data->moves = 0;
-	if (data->index_max == 2)
-		rotate_to_first_a(data);
-	if (data->index_max == 3)
-		sort_3(data);
-	if (data->index_max > 3 && data->index_max < 10)
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_a[x] == 0)
+		x++;
+	data->is_min_a = data->stack_a[x];
+	x++;
+	while (x < data->index_max)
 	{
-		data->stack_b = ft_calloc(data->index + 1, 1);
-		small_sorting(data);
+		if (data->stack_a[x] < data->is_min_a)
+			data->is_min_a = data->stack_a[x];
+		else
+			x++;
 	}
-	/*if (data->index < 10)
-	else
-		return ;
-		normal_sorting(data);
-*/
+	return ;
+}
+
+void	is_max_a(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_a[x] == 0)
+		x++;
+	data->is_max_a = data->stack_a[x];
+	x++;
+	while (x < data->index_max)
+	{
+		if (data->stack_a[x] > data->is_max_a)
+			data->is_max_a = data->stack_a[x];
+		else
+			x++;
+	}
+	return ;
+}
+
+void	is_min_b(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_b[x] == 0)
+		x++;
+	data->is_min_b = data->stack_b[x];
+	x++;
+	while (x < data->index_max)
+	{
+		if (data->stack_b[x] < data->is_min_b)
+			data->is_min_b = data->stack_b[x];
+		else
+		x++;
+	}
+	return ;
+}
+
+void	is_max_b(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_b[x] == 0)
+		x++;
+	data->is_max_b = data->stack_b[x];
+	x++;
+	while (x < data->index_max)
+	{
+		if (data->stack_b[x] > data->is_max_b)
+			data->is_max_b = data->stack_b[x];
+		else
+			x++;
+	}
+	return ;
 }
 
 /*
