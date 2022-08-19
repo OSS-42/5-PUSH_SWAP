@@ -162,17 +162,20 @@ void	sort_5(t_vault *data)
 
 	printf("%s\n", "Utilisation de sort_5");	
 	check_qty_stack_a(data);
-	while (data->moves < data->index_max)
+	while (data->qty_stack_a > 3)
 	{
+		check_qty_stack_a(data);
+		printf("%s%d\n",  "qty A:", data->qty_stack_a);
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
-//checker si A est en ordre pour éviter rotations inutiles.
+//		check_order_a(data);
+//		if (data->qty_stack_a == 3)
+//			break ;
 		if (data->stack_a[x] > data->index_max / 2)
 			rotate_to_last_a(data);
 		else if (data->stack_a[x] <= data->index_max / 2)
 			push_to_b(data);
-		sort_5(data);
 	}
 	sort_3_a(data);
 	check_qty_stack_b(data);
