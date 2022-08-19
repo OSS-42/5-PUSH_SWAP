@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 
+void	add_to_moves_list(t_vault *data, char *move_name)
+{
+	if (ft_lstsize(data->moves_list) == 0)
+		data->moves_list->move = move_name;
+	else
+		ft_lstadd_back(data->moves_list, data->moves_list->move);
+		
+
+}
+
 void	check_qty_stack_b(t_vault *data)
 {
 	unsigned int	x;

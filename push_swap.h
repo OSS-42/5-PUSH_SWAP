@@ -22,7 +22,7 @@
 
 typedef struct s_node
 {
-	void			*content;
+	char			*move;
 	struct s_node	*next;
 }	t_node;
 
@@ -51,6 +51,8 @@ typedef struct s_vault
 	unsigned int	is_max_a;
 	unsigned int	is_max_b;	
 	unsigned int	moves;
+	t_node			*moves_list;
+	unsigned int	ind_moves_list;
 	unsigned int	difficulty;
 }	t_vault;
 
