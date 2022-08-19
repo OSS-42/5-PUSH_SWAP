@@ -54,7 +54,7 @@ void	rotate_to_first_a(t_vault *data)
 	else
 	{
 		printf("%s\n", "rotation to first dans A");
-		while (x > 0 && data->stack_a[x] != 0)
+		while (x > 0 && data->stack_a[x - 1] != 0)
 		{
 			data->nbr_temp = data->stack_a[x];
 			data->stack_a[x] = data->stack_a[x - 1];
@@ -104,7 +104,7 @@ void	rotate_to_first_b(t_vault *data)
 	else
 	{
 		printf("%s\n", "rotation to first dans B");
-		while (x > 0 && data->stack_b[x] != 0)
+		while (x > 0 && data->stack_b[x - 1] != 0)
 		{
 			data->nbr_temp = data->stack_b[x];
 			data->stack_b[x] = data->stack_b[x - 1];

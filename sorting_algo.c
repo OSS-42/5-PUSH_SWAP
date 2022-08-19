@@ -69,6 +69,7 @@ void	sort_3_b(t_vault *data)
 	x = 0;
 	printf("%s\n", "Utilisation de sort_3_b");
 	check_qty_stack_b(data);
+	check_order_b(data);
 	if (data->is_in_order_b == 1)
 		return ;
 	while (data->stack_b[x] == 0)
@@ -76,15 +77,11 @@ void	sort_3_b(t_vault *data)
 	is_min_b(data);
 	is_max_b(data);
 	if (data->qty_stack_b == 2)
-	{
 		rotate_to_last_b(data);
-		check_order_a(data);
-	}
 	else if (data->stack_b[x] == data->is_min_b)
 	{
 		swap_top_b(data);
 		rotate_to_last_b(data);
-		check_order_b(data);
 	}
 	else if (data->stack_b[x] == data->is_max_b)
 	{
@@ -95,7 +92,6 @@ void	sort_3_b(t_vault *data)
 			rotate_to_last_b(data);
 			swap_top_b(data);
 		}
-		check_order_b(data);
 	}
 	else
 	{
@@ -103,8 +99,8 @@ void	sort_3_b(t_vault *data)
 			swap_top_b(data);
 		else
 			rotate_to_first_b(data);
-		check_order_b(data);
 	}
+	check_order_b(data);
 	return ;
 }
 
@@ -169,9 +165,8 @@ void	sort_5(t_vault *data)
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
-//		check_order_a(data);
-//		if (data->qty_stack_a == 3)
-//			break ;
+		if (data->qty_stack_a == 3)
+			break ;
 		if (data->stack_a[x] > data->index_max / 2)
 			rotate_to_last_a(data);
 		else if (data->stack_a[x] <= data->index_max / 2)
@@ -184,7 +179,7 @@ void	sort_5(t_vault *data)
 	while (data->stack_b[y] == 0)
 		y++;
 	if (data->stack_b[y] != data->is_max_b)
-		rotate_to_last_b(data);
+		rotate_to_first_b(data);
 	while (data->qty_stack_b > 0)
 	{
 		push_to_a(data);
