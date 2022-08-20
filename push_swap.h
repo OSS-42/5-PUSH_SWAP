@@ -20,12 +20,12 @@
 
 /*****Node*****/
 
-typedef struct s_node
+/*typedef struct s_node
 {
 	char			*move;
 	struct s_node	*next;
 }	t_node;
-
+*/
 /*****Data*****/
 
 typedef struct s_vault
@@ -51,7 +51,7 @@ typedef struct s_vault
 	unsigned int	is_max_a;
 	unsigned int	is_max_b;	
 	unsigned int	moves;
-	t_node			*moves_list;
+	t_list			*moves_list;
 	unsigned int	ind_moves_list;
 	unsigned int	difficulty;
 }	t_vault;

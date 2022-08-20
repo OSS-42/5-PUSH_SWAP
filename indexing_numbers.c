@@ -55,7 +55,7 @@ void	indexing_numbers(t_vault *data)
 	data->index_max = data->index - 1;
 	data->is_in_order_a = 0;
 	data->ind_moves_list = 0;
-	data->moves_list->move = malloc(sizeof(char *) * (3 + 1));
+	data->moves_list = malloc(sizeof(t_list));
 	algo_choice(data);
 	return ;
 }

@@ -12,14 +12,27 @@
 
 #include "push_swap.h"
 
+/*
+T_list ma_liste;
+T_list temp;
+
+ma_liste = lst_new(« ton_move »);
+Ensuite
+Temp = lst_new(« next_move »);
+Lst_addback(ma_liste, temp)
+*/
+
 void	add_to_moves_list(t_vault *data, char *move_name)
 {
-	if (ft_lstsize(data->moves_list) == 0)
-		data->moves_list->move = move_name;
-	else
-		ft_lstadd_back(data->moves_list, data->moves_list->move);
-		
+	t_list	*temp;
 
+	if (ft_lstsize(data->moves_list) == 0)
+		data->moves_list = ft_lstnew(move_name);
+	else
+	{
+		temp = ft_lstnew(move_name);
+		ft_lstadd_back(data->moves_list, temp);
+	}
 }
 
 void	check_qty_stack_b(t_vault *data)
