@@ -193,3 +193,24 @@ void	sort_5(t_vault *data)
 	}
 	return ;
 }
+
+void	sort_100(t_vault *data)
+{
+	unsigned int	x;
+	unsigned int	y;
+
+	printf("%s\n", "Utilisation de sort_100");	
+	check_qty_stack_a(data);
+	while (data->qty_stack_a > data->qty_stack_a / 4)
+	{
+		check_qty_stack_a(data);
+		printf("%s%d\n",  "qty A:", data->qty_stack_a);
+		x = 0;
+		while (data->stack_a[x] == 0)
+			x++;
+		if (data->stack_a[x] > data->index_max / 4)
+			rotate_to_last_a(data);
+		else if (data->stack_a[x] <= data->index_max / 4)
+			push_to_b(data);
+	}
+}

@@ -39,6 +39,7 @@ void	both_rotate_to_first(t_vault *data)
 		x--;
 	}
 	data->moves++;
+//	add_to_moves_list(data, "rrr");
 	printf("%s\n", "rrr");
 }
 
@@ -69,5 +70,6 @@ void	both_rotate_to_last(t_vault *data)
 		x++;
 	}
 	data->moves++;
+//	add_to_moves_list(data, "rr");
 	printf("%s\n", "rr");
 }

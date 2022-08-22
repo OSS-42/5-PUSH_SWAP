@@ -51,7 +51,7 @@ typedef struct s_vault
 	unsigned int	is_max_a;
 	unsigned int	is_max_b;	
 	unsigned int	moves;
-	t_list			*moves_list;
+	t_list			**moves_list;
 	unsigned int	ind_moves_list;
 	unsigned int	difficulty;
 }	t_vault;
@@ -83,6 +83,7 @@ void	is_max_a(t_vault *data);
 void	is_min_b(t_vault *data);
 void	is_max_b(t_vault *data);
 void	check_difficulty(t_vault *data); // pas utilisé
+//void	add_to_moves_list(t_vault *data, char *move_name); // pas utilisé
 void	sort_3_a(t_vault *data);
 void	sort_3_b(t_vault *data);
 void	sort_4_a(t_vault *data);

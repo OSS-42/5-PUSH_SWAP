@@ -79,10 +79,10 @@ void	algo_choice(t_vault *data)
 		data->stack_b = ft_calloc(data->index + 1, 1);
 		sort_5(data);
 	}
-	/*if (data->index < 10)
-	else
-		return ;
-		normal_sorting(data);
-*/
+	else if (data->index_max > 5 && data->index_max <= 100)
+	{
+		printf("%s\n", "algo pas encore prêt");
+	//	sort_100(data);
+	}
 	return ;
 }
