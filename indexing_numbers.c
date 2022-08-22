@@ -17,6 +17,57 @@ Chaque nombre doit obtenir son index par rapport aux autres nombres.
 L'indexation start à 1 pour que 0 = faux 'null' pendant le triage
 */
 
+/*
+fonctionnement avec binaires (Radix sort), efficacité à prouver. idéal à > 128 ?
+watch for pa/pb inutiles en fin de boucle lors du sorting de A (dernière valeur à faire pa)
+
+long long	convert(t_vault *data, int n)
+{	
+	long long	bin;
+	int 		rem;
+	int 		i;
+
+	bin = 0;
+	rem = 1;
+	i = 1;
+	while (n != 0)
+	{
+		rem = n % 2;
+		n = n / 2;
+		bin = bin + rem * i;
+		i = i * 10;
+	}
+	return bin;
+}
+*/
+
+void	algo_choice(t_vault *data)
+{
+	check_order_a(data);
+	if (data->is_in_order_a == 1)
+		return ;
+	printf("%s\n", "liste non triée, commencons...");
+	data->moves = 0;
+	if (data->index_max <= 3)
+		sort_3_a(data);
+	else if (data->index_max == 4)
+	{
+		data->stack_b = ft_calloc(data->index + 1, 1);
+		sort_4_a(data);
+	}
+	else if (data->index_max == 5)
+	{
+		data->stack_b = ft_calloc(data->index + 1, 1);
+		sort_5(data);
+	}
+	else if (data->index_max > 5 && data->index_max <= 100)
+	{
+		printf("%s\n", "algo pas encore prêt");
+	//	sort_100(data);
+	}
+	return ;
+}
+
 void	indexing_numbers(t_vault *data)
 {
 	unsigned int	x;
@@ -57,32 +108,5 @@ void	indexing_numbers(t_vault *data)
 	data->ind_moves_list = 0;
 	data->moves_list = malloc(sizeof(t_list));
 	algo_choice(data);
-	return ;
-}
-
-void	algo_choice(t_vault *data)
-{
-	check_order_a(data);
-	if (data->is_in_order_a == 1)
-		return ;
-	printf("%s\n", "liste non triée, commencons...");
-	data->moves = 0;
-	if (data->index_max <= 3)
-		sort_3_a(data);
-	else if (data->index_max == 4)
-	{
-		data->stack_b = ft_calloc(data->index + 1, 1);
-		sort_4_a(data);
-	}
-	else if (data->index_max == 5)
-	{
-		data->stack_b = ft_calloc(data->index + 1, 1);
-		sort_5(data);
-	}
-	else if (data->index_max > 5 && data->index_max <= 100)
-	{
-		printf("%s\n", "algo pas encore prêt");
-	//	sort_100(data);
-	}
 	return ;
 }
