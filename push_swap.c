@@ -49,6 +49,8 @@ static void	check_doubles(t_vault *data)
 		}
 		x++;
 	}
+	if (data->nbr_args > 500)
+		data->error_code = 4;
 	errors(data);
 	return ;
 }
@@ -97,14 +99,6 @@ static int	quotes_to_args(t_vault *data, char **argv)
 		return (*data->args[1]);
 	return (0);
 }
-
-/*	
-	trouver le nombre le plus petits de coups pour trier A.
-	tips :
-	par groupes
-	B trié du plus grand au plus petit
-	A trié du plus petit au plus grand
-*/
 
 int	main(int argc, char **argv)
 {

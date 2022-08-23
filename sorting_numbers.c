@@ -85,7 +85,10 @@ void	is_min_a(t_vault *data)
 	while (x < data->index_max)
 	{
 		if (data->stack_a[x] < data->is_min_a)
+		{
 			data->is_min_a = data->stack_a[x];
+			data->min_a_pos = x;
+		}
 		else
 			x++;
 	}
@@ -142,7 +145,10 @@ void	is_max_b(t_vault *data)
 	while (x < data->index_max)
 	{
 		if (data->stack_b[x] > data->is_max_b)
+		{
 			data->is_max_b = data->stack_b[x];
+			data->max_b_pos = x;
+		}
 		else
 			x++;
 	}

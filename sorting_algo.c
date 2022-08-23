@@ -62,7 +62,7 @@ void	sort_3_a(t_vault *data)
 	return ;
 }
 
-void	sort_3_b(t_vault *data)
+void	sort_3_b(t_vault *data) // pas utilisé
 {
 	unsigned int	x;
 
@@ -197,20 +197,75 @@ void	sort_5(t_vault *data)
 void	sort_100(t_vault *data)
 {
 	unsigned int	x;
-	unsigned int	y;
+//	unsigned int	y;
 
+/* 
+faire un check si liste sortée ou reverse sortée
+*/
 	printf("%s\n", "Utilisation de sort_100");	
 	check_qty_stack_a(data);
-	while (data->qty_stack_a > data->qty_stack_a / 4)
+	while (data->qty_stack_a > 3)
 	{
 		check_qty_stack_a(data);
 		printf("%s%d\n",  "qty A:", data->qty_stack_a);
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
-		if (data->stack_a[x] > data->index_max / 4)
+		if (data->stack_a[x] > data->index_max / 2)
 			rotate_to_last_a(data);
-		else if (data->stack_a[x] <= data->index_max / 4)
+		else if (data->stack_a[x] <= data->index_max / 2)
 			push_to_b(data);
+	}
+	sort_3_a(data);
+	check_qty_stack_b(data);
+	while (data->qty_stack_b > 0)
+	{
+		check_qty_stack_a(data);
+		is_min_a(data);
+		if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
+			data->cost_a_to_top = data->min_a_pos - ((data->index_max - 1) - (data->qty_stack_a - 1));
+		else
+			data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
+		is_max_b(data);
+		check_qty_stack_b(data);
+		if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2 ) - 1))
+			data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
+		else
+			data->cost_b_to_top = data->max_b_pos - (data->index_max - 1);
+		while (abs(data->cost_a_to_top) + abs(data->cost_b_to_top) != 0)
+		{
+			if (data->cost_a_to_top < 0 && data->cost_b_to_top < 0)
+			{
+				rotate_both_to_first(data);
+				data->cost_a_to_top += 1;
+				data->cost_b_to_top += 1;
+			}
+			else if (data->cost_a_to_top > 0 && data->cost_b_to_top > 0)
+			{
+				rotate_both_to_last(data);
+				data->cost_a_to_top -= 1;
+				data->cost_b_to_top -= 1;
+			}
+			else if (data->cost_a_to_top > 0)
+			{
+				rotate_to_last_a(data);
+				data->cost_a_to_top -= 1;
+			}
+			else if (data->cost_a_to_top < 0)
+			{
+				rotate_to_first_a(data);
+				data->cost_a_to_top += 1;
+			}
+			else if (data->cost_b_to_top > 0)
+			{
+				rotate_to_last_b(data);
+				data->cost_b_to_top -= 1;
+			}
+			else
+			{
+				rotate_to_first_b(data);
+				data->cost_b_to_top += 1;
+			}
+		}
 	}
 }

@@ -104,7 +104,7 @@ void	swap_top_b(t_vault *data)
 	}
 }
 
-void	both_swap_top(t_vault *data)
+void	swap_both_top(t_vault *data)
 {
 	unsigned int	x;
 

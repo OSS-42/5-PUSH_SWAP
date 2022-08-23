@@ -26,6 +26,8 @@ void	errors(t_vault *data) // a revoir
 		printf("%s\n%s\n", "Error", "Il y a des doublons");
 	else if (data->error_code == 3)
 		printf("%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
+	else if (data->error_code == 4)
+		printf("%s\n%s\n", "Error", "Trop de paramètres (over 500)");
 	exit (0);
 }
 

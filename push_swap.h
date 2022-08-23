@@ -47,11 +47,15 @@ typedef struct s_vault
 	int				is_in_order_a;
 	int				is_in_order_b;
 	unsigned int	is_min_a;
+	unsigned int	min_a_pos;
 	unsigned int	is_min_b;
 	unsigned int	is_max_a;
-	unsigned int	is_max_b;	
+	unsigned int	is_max_b;
+	unsigned int	max_b_pos;
+	int				cost_a_to_top;
+	int				cost_b_to_top;
 	unsigned int	moves;
-	t_list			**moves_list;
+	t_list			**moves_list; // pas utilisé
 	unsigned int	ind_moves_list;
 	unsigned int	difficulty;
 }	t_vault;
@@ -69,9 +73,9 @@ void	rotate_to_first_b(t_vault *data);
 void	rotate_to_last_a(t_vault *data);
 void	swap_top_a(t_vault *data);
 void	swap_top_b(t_vault *data);
-void	both_swap_top(t_vault *data);
-void	both_rotate_to_first(t_vault *data);
-void	both_rotate_to_last(t_vault *data);
+void	swap_both_top(t_vault *data);
+void	rotate_both_to_first(t_vault *data);
+void	rotate_both_to_last(t_vault *data);
 void	check_qty_stack_a(t_vault *data);
 void	check_qty_stack_b(t_vault *data);
 void	stacks_visu(t_vault *data); //pour debug

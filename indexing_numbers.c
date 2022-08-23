@@ -62,8 +62,13 @@ void	algo_choice(t_vault *data)
 	}
 	else if (data->index_max > 5 && data->index_max <= 100)
 	{
-		printf("%s\n", "algo pas encore prêt");
+		printf("%s\n", "algo sort_100 pas encore prêt");
 	//	sort_100(data);
+	}
+	else if (data->index_max > 100 && data->index_max <= 500)
+	{
+		printf("%s\n", "algo sort_500 pas encore prêt");
+	//	sort_500(data);
 	}
 	return ;
 }
