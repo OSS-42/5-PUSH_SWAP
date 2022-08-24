@@ -197,11 +197,13 @@ void	sort_5(t_vault *data)
 void	sort_100(t_vault *data)
 {
 	unsigned int	x;
-//	unsigned int	y;
 
 /* 
-faire un check si liste sortée ou reverse sortée
+faire un check si liste reverse sortée
 */
+	check_order_a(data);
+	if (data->is_in_order_a == 1)
+			return ;
 	printf("%s\n", "Utilisation de sort_100");	
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
@@ -220,6 +222,13 @@ faire un check si liste sortée ou reverse sortée
 	check_qty_stack_b(data);
 	while (data->qty_stack_b > 0)
 	{
+		check_order_a(data);
+		check_qty_stack_b(data);
+		if (data->is_in_order_a == 1 && check_qty_stack_b == 0 && data->moves > 0)
+		{
+			printf("%s\n", "liste complètement triée !");
+			return ;
+		}
 		check_qty_stack_a(data);
 		is_min_a(data);
 		if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
@@ -267,5 +276,6 @@ faire un check si liste sortée ou reverse sortée
 				data->cost_b_to_top += 1;
 			}
 		}
+		push_to_a(data);
 	}
 }
