@@ -90,7 +90,7 @@ static int	quotes_to_args(t_vault *data, char **argv)
 	int	x;
 
 	x = 0;
-	data->args = ft_split(argv[1], ' ');
+	data->args = ft_split(argv[1], ' '); // a free lorsque quotes
 	while (data->args[x++])
 		data->nbr_args++;
 	check_args(data);
@@ -110,7 +110,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
-		data.args = malloc(sizeof(char *) * argc);
+		data.args = malloc(sizeof(char *) * argc);  // a free lorsque pas quotes
 		if (!data.args)
 			return (0);
 		data.args = &argv[1];

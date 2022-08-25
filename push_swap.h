@@ -56,8 +56,8 @@ typedef struct s_vault
 	int				cost_b_to_top;
 	unsigned int	moves;
 	t_list			**moves_list; // pas utilisé
-	unsigned int	ind_moves_list;
-	unsigned int	difficulty;
+	unsigned int	ind_moves_list; // pas utilisé
+	unsigned int	difficulty; // pas utilisé
 }	t_vault;
 
 /*****Fonctions*****/

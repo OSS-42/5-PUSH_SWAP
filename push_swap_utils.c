@@ -21,13 +21,28 @@ void	errors(t_vault *data) // a revoir
 	if (data->error_code == 0)
 		return ;
 	else if (data->error_code == 1)
+	{
 		printf("%s\n%s\n", "Error", "Paramètres non valides");
+		free (data->args);
+	}
 	else if (data->error_code == 2)
+	{
 		printf("%s\n%s\n", "Error", "Il y a des doublons");
+		free (data->args);
+		free (data->args_int);
+	}
 	else if (data->error_code == 3)
+	{
 		printf("%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
+		free (data->args);
+		free (data->args_int);
+	}
 	else if (data->error_code == 4)
+	{
 		printf("%s\n%s\n", "Error", "Trop de paramètres (over 500)");
+		free (data->args);
+		free (data->args_int);
+	}
 	exit (0);
 }
 
@@ -49,6 +64,7 @@ void	stacks_visu(t_vault *data) // pour debug
 	unsigned int	x;
 
 	x = 0;
+	printf("%s%d\n", "index_max = ", data->index_max);
 	printf("%s%s%s\n", "A", "	", "B");
 	while (x < data->index_max)
 	{
@@ -59,7 +75,7 @@ void	stacks_visu(t_vault *data) // pour debug
 	return ;
 }
 
-void	check_difficulty(t_vault *data) //inutilisé
+void	check_difficulty(t_vault *data) // inutilisé
 {
 	unsigned int	x;
 

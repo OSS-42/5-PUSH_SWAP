@@ -224,11 +224,6 @@ faire un check si liste reverse sortée
 	{
 		check_order_a(data);
 		check_qty_stack_b(data);
-		if (data->is_in_order_a == 1 && check_qty_stack_b == 0 && data->moves > 0)
-		{
-			printf("%s\n", "liste complètement triée !");
-			return ;
-		}
 		check_qty_stack_a(data);
 		is_min_a(data);
 		if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
@@ -236,7 +231,7 @@ faire un check si liste reverse sortée
 		else
 			data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
 		is_max_b(data);
-		check_qty_stack_b(data);
+//		check_qty_stack_b(data);
 		if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2 ) - 1))
 			data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
 		else
@@ -277,5 +272,10 @@ faire un check si liste reverse sortée
 			}
 		}
 		push_to_a(data);
+	}
+	if (data->is_in_order_a == 1 && data->moves > 0)
+	{
+		printf("%s\n", "liste complètement triée !");
+		return ;
 	}
 }

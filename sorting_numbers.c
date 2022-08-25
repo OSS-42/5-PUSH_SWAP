@@ -48,28 +48,25 @@ void	check_order_a(t_vault *data)
 	unsigned int	x;
 	
 	x = 0;
-	printf("%s\n", "checkons l'ordre croissant de A");
-	printf("%s%d\n", "index max = ", data->index_max);
-	stacks_visu(data);
+	printf("%s\n", "checkons l'ordre croissant de A"); // pour debug
 	while (data->stack_a[x] == 0)
 		x++;
 	while (x < data->index_max - 1)
 	{
-		printf("%s%d\n", "stack position : ", x);
-		printf("%s%d\n", "index : ", data->stack_a[x]);
-		printf("%s%d\n", "next index : ", data->stack_a[x + 1]);
+		printf("%s%d\n", "stack position : ", x); // pour debug
+		printf("%s%d\n", "index : ", data->stack_a[x]); // pour debug
+		printf("%s%d\n", "next index : ", data->stack_a[x + 1]); // pour debug
 		if (data->stack_a[x] > data->stack_a[x + 1])
 		{
-			printf("%s\n", "A est dans le désordre");
+			printf("%s\n", "A est dans le désordre"); // pour debug
 			data->is_in_order_a = -1;
-			data->difficulty = x;
 			return ;
 		}
 		else
 			x++;
 	}
 	data->is_in_order_a = 1;
-	printf("%s\n", "A est en ordre croissant !");
+	printf("%s\n", "A est en ordre croissant !"); // pour debug
 	return ;
 }
 

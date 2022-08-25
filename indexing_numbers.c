@@ -47,29 +47,23 @@ void	algo_choice(t_vault *data)
 	if (data->is_in_order_a == 1)
 		return ;
 	printf("%s\n", "liste non triée, commencons...");
+	data->stack_b = ft_calloc(data->index + 1, 1);
 	data->moves = 0;
 	if (data->index_max <= 3)
 		sort_3_a(data);
 	else if (data->index_max == 4)
-	{
-		data->stack_b = ft_calloc(data->index + 1, 1);
 		sort_4_a(data);
-	}
 	else if (data->index_max == 5)
-	{
-		data->stack_b = ft_calloc(data->index + 1, 1);
 		sort_5(data);
-	}
 	else if (data->index_max > 5 && data->index_max <= 100)
 	{
 		printf("%s\n", "algo sort_100 pas encore prêt");
-	//	sort_100(data);
 	}
 	else if (data->index_max > 100 && data->index_max <= 500)
 	{
 		printf("%s\n", "algo sort_500 pas encore prêt");
-	//	sort_500(data);
 	}
+	free (data->stack_b);
 	return ;
 }
 
@@ -110,8 +104,10 @@ void	indexing_numbers(t_vault *data)
 	check_index(data); //debug visualisation
 	data->index_max = data->index - 1;
 	data->is_in_order_a = 0;
-	data->ind_moves_list = 0;
-	data->moves_list = malloc(sizeof(t_list));
 	algo_choice(data);
+	free (data->stack_a);
+	free (data->switches);
+	free (data->args);
+	free (data->args_int);
 	return ;
 }
