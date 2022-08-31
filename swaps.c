@@ -34,7 +34,7 @@ void	check_qty_stack_b(t_vault *data)
 	
 	x = 0;
 	data->qty_stack_b = 0;
-	while (data->stack_b[x] == 0)
+	while (data->stack_b[x] == 0 && x < data->index_max)
 		x++;
 	while (x < data->index_max)
 	{
@@ -49,7 +49,7 @@ void	check_qty_stack_a(t_vault *data)
 	
 	x = 0;
 	data->qty_stack_a = 0;
-	while (data->stack_a[x] == 0)
+	while (data->stack_a[x] == 0 && x < data->index_max)
 		x++;
 	while (x < data->index_max)
 	{

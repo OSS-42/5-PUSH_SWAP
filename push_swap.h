@@ -81,6 +81,7 @@ void	check_qty_stack_b(t_vault *data);
 void	stacks_visu(t_vault *data); //pour debug
 void	check_index(t_vault *data); //pour debug
 void	check_order_a(t_vault *data);
+void	check_reverse_order_b(t_vault *data);
 void	check_order_b(t_vault *data);
 void	is_min_a(t_vault *data);
 void	is_max_a(t_vault *data);
@@ -92,5 +93,6 @@ void	sort_3_a(t_vault *data);
 void	sort_3_b(t_vault *data);
 void	sort_4_a(t_vault *data);
 void	sort_5(t_vault *data);
+void	sort_100(t_vault *data);
 
 #endif

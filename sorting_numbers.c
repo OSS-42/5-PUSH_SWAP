@@ -70,6 +70,32 @@ void	check_order_a(t_vault *data)
 	return ;
 }
 
+void	check_reverse_order_b(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	printf("%s\n", "checkons l'ordre DÉcroissant de B"); //pour débug
+	while (data->stack_b[x] == 0)
+		x++;
+	while (x < data->index_max - 1)
+	{
+		printf("%s%d\n", "stack position : ", x); // pour debug
+		printf("%s%d\n", "index : ", data->stack_b[x]); // pour debug
+		printf("%s%d\n", "next index : ", data->stack_b[x + 1]); // pour debug
+		if (data->stack_b[x + 1] > data->stack_b[x])
+		{
+			printf("%s\n", "B est dans le désordre");
+			data->is_in_order_a = -1;
+			return ;
+		}
+		else x++;
+	}
+	data->is_in_order_b = -2;
+	printf("%s\n", "B est en ordre DÉcroissant !");
+	return ;
+}
+
 void	is_min_a(t_vault *data)
 {
 	unsigned int	x;

@@ -12,12 +12,28 @@
 
 #include "push_swap.h"
 
+
+static void	free_data_args(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	printf("%s\n", "je free");
+	while (x < data->nbr_args)
+	{
+		free (data->args[x]);
+		x++;
+	}
+	return ;
+}
+
+
 static void	from_a_to_long(t_vault *data)
 {
 	unsigned int	x;
 
 	x = 0;
-	data->args_int = malloc(sizeof(long *) * data->nbr_args);
+	data->args_int = malloc(sizeof(long *) * data->nbr_args + 1);
 	if (!data->args_int)
 		return ;
 	while (x < data->nbr_args)
@@ -97,6 +113,7 @@ static int	quotes_to_args(t_vault *data, char **argv)
 	errors(data);
 	if (data->nbr_args == 1)
 		return (*data->args[1]);
+	free_data_args(data);
 	return (0);
 }
 
@@ -117,6 +134,7 @@ int	main(int argc, char **argv)
 		data.nbr_args = argc - 1;
 		printf("%s %u\n", "1.nbr args :", data.nbr_args);
 		check_args(&data);
+		free_data_args(&data);
 	}
 	else
 	{

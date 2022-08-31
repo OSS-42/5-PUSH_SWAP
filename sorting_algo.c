@@ -198,12 +198,9 @@ void	sort_100(t_vault *data)
 {
 	unsigned int	x;
 
-/* 
-faire un check si liste reverse sortée
-*/
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
-			return ;
+		return ;
 	printf("%s\n", "Utilisation de sort_100");	
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
@@ -226,13 +223,18 @@ faire un check si liste reverse sortée
 		check_qty_stack_b(data);
 		check_qty_stack_a(data);
 		is_min_a(data);
-		if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
+		if (data->is_in_order_a == 1)
+			data->cost_a_to_top = 0;
+		else if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
 			data->cost_a_to_top = data->min_a_pos - ((data->index_max - 1) - (data->qty_stack_a - 1));
 		else
 			data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
 		is_max_b(data);
+		check_reverse_order_b(data);
 //		check_qty_stack_b(data);
-		if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2 ) - 1))
+		if (data->is_in_order_b == -2)
+			data->cost_b_to_top = 0;
+		else if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2 ) - 1))
 			data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
 		else
 			data->cost_b_to_top = data->max_b_pos - (data->index_max - 1);
