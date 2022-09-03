@@ -134,7 +134,7 @@ int	main(int argc, char **argv)
 		data.nbr_args = argc - 1;
 		printf("%s %u\n", "1.nbr args :", data.nbr_args);
 		check_args(&data);
-		free_data_args(&data);
+		//free_data_args(&data);
 	}
 	else
 	{

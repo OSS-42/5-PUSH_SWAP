@@ -210,18 +210,18 @@ void	sort_100(t_vault *data)
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
-		if (data->stack_a[x] > data->index_max / 2)
+		data->pivot = (data->qty_stack_a / 2 + x);
+		if (data->stack_a[x] > data->pivot)
 			rotate_to_last_a(data);
-		else if (data->stack_a[x] <= data->index_max / 2)
+		else if (data->stack_a[x] <= data->pivot)
 			push_to_b(data);
 	}
 	sort_3_a(data);
 	check_qty_stack_b(data);
 	while (data->qty_stack_b > 0)
 	{
-		check_order_a(data);
-		check_qty_stack_b(data);
 		check_qty_stack_a(data);
+		check_order_a(data);
 		is_min_a(data);
 		if (data->is_in_order_a == 1)
 			data->cost_a_to_top = 0;
@@ -229,17 +229,30 @@ void	sort_100(t_vault *data)
 			data->cost_a_to_top = data->min_a_pos - ((data->index_max - 1) - (data->qty_stack_a - 1));
 		else
 			data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
-		is_max_b(data);
+		check_qty_stack_b(data);
 		check_reverse_order_b(data);
+		is_max_b(data);
 //		check_qty_stack_b(data);
+		printf("%s%d\n", "max pos b : ", data->max_b_pos);
 		if (data->is_in_order_b == -2)
 			data->cost_b_to_top = 0;
 		else if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2 ) - 1))
+		{
+			printf("AAA\n");
 			data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
+		}
 		else
-			data->cost_b_to_top = data->max_b_pos - (data->index_max - 1);
+		{
+			printf("BBB\n");
+			data->cost_b_to_top = data->max_b_pos - (data->index_max);
+		}
+		printf("%s%d\n", "cost_to_top_a : ", data->cost_a_to_top);
+		printf("%s%d\n", "cost_to_top_b : ", data->cost_b_to_top);
 		while (abs(data->cost_a_to_top) + abs(data->cost_b_to_top) != 0)
 		{
+			printf("%s%d\n", "cost_to_top_a : ", data->cost_a_to_top);
+			printf("%s%d\n", "cost_to_top_b : ", data->cost_b_to_top);
+			printf("%s%d\n", "max pos b : ", data->max_b_pos);
 			if (data->cost_a_to_top < 0 && data->cost_b_to_top < 0)
 			{
 				rotate_both_to_first(data);
@@ -265,7 +278,7 @@ void	sort_100(t_vault *data)
 			else if (data->cost_b_to_top > 0)
 			{
 				rotate_to_last_b(data);
-				data->cost_b_to_top -= 1;
+				data->cost_b_to_top = data->cost_b_to_top - 1;
 			}
 			else
 			{
@@ -274,7 +287,9 @@ void	sort_100(t_vault *data)
 			}
 		}
 		push_to_a(data);
+		check_qty_stack_b(data);
 	}
+	check_order_a(data);
 	if (data->is_in_order_a == 1 && data->moves > 0)
 	{
 		printf("%s\n", "liste complètement triée !");
