@@ -217,6 +217,15 @@ void	sort_100(t_vault *data)
 			rotate_to_last_a(data);
 		else if (data->stack_a[x] <= data->pivot - 1)
 			push_to_b(data);
+		x = 0;
+		while (data->stack_b[x] == 0)
+			x++;
+		if (data->index_max <= 100 && data->stack_b[x] < data->index_max / 3)
+			rotate_to_last_b(data);
+		else if (data->index_max > 100 && data->stack_b[x] < data->index_max / 4)
+			rotate_to_last_b(data);
+		else if (data->stack_b[x] < data->stack_b[x + 1])
+			swap_top_b(data);
 		check_qty_stack_a(data);
 	}
 	sort_3_a(data);
