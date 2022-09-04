@@ -41,6 +41,7 @@ void	rotate_both_to_first(t_vault *data)
 	data->moves++;
 //	add_to_moves_list(data, "rrr");
 	printf("%s\n", "rrr");
+//	stacks_visu(data);
 }
 
 void	rotate_both_to_last(t_vault *data)
@@ -51,7 +52,9 @@ void	rotate_both_to_last(t_vault *data)
 	check_qty_stack_a(data);
 	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
 		return ;
-	while (x < data->index_max && data->stack_a[x] != 0)
+	while (data->stack_a[x] == 0)
+			x++;
+	while (x < data->index_max - 1 && data->stack_a[x] != 0)
 	{
 		data->nbr_temp = data->stack_a[x];
 		data->stack_a[x] = data->stack_a[x + 1];
@@ -62,7 +65,9 @@ void	rotate_both_to_last(t_vault *data)
 	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
 		return ;
 	x = 0;
-	while (x < data->index_max && data->stack_b[x] != 0)
+	while (data->stack_b[x] == 0)
+		x++;
+	while (x < data->index_max - 1 && data->stack_b[x] != 0)
 	{
 		data->nbr_temp = data->stack_b[x];
 		data->stack_b[x] = data->stack_b[x + 1];
@@ -72,4 +77,5 @@ void	rotate_both_to_last(t_vault *data)
 	data->moves++;
 //	add_to_moves_list(data, "rr");
 	printf("%s\n", "rr");
+//	stacks_visu(data);
 }

@@ -46,7 +46,7 @@ void	algo_choice(t_vault *data)
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
 		return ;
-	printf("%s\n", "liste non triée, commencons...");
+//	printf("%s\n", "liste non triée, commencons...");
 	data->stack_b = ft_calloc(data->index, 10);
 	data->moves = 0;
 	if (data->index_max <= 3)
@@ -55,14 +55,10 @@ void	algo_choice(t_vault *data)
 		sort_4_a(data);
 	else if (data->index_max == 5)
 		sort_5(data);
-	else if (data->index_max > 5 && data->index_max <= 100)
+	else if (data->index_max > 5 && data->index_max <= 500)
 	{
-		printf("%s\n", "let's do sort_100");
+//		printf("%s\n", "let's do sort_100");
 		sort_100(data);
-	}
-	else if (data->index_max > 100 && data->index_max <= 500)
-	{
-		printf("%s\n", "algo sort_500 pas encore prêt");
 	}
 	free (data->stack_b);
 	return ;
@@ -80,7 +76,7 @@ void	indexing_numbers(t_vault *data)
 	data->switches = ft_calloc(data->nbr_args, 10);
 	data->stack_a = ft_calloc(data->nbr_args, 10);
 	data->min = INT_MAX;
-	printf("%s%d\n", "2.nbr args :", data->nbr_args);
+//	printf("%s%d\n", "2.nbr args :", data->nbr_args);
 	while (y < data->nbr_args)
 	{
 		while (x < data->nbr_args)
@@ -102,7 +98,7 @@ void	indexing_numbers(t_vault *data)
 		data->min = data->args_int[x];
 		y++;
 	}
-	check_index(data); //debug visualisation
+//	check_index(data); //debug visualisation
 	data->index_max = data->index - 1;
 	data->is_in_order_a = 0;
 	algo_choice(data);

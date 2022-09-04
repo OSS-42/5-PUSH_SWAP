@@ -32,7 +32,7 @@ void	push_to_a(t_vault *data)
 	data->moves++;
 //	add_to_moves_list(data, "pa");
 	printf("%s\n", "pa");
-	stacks_visu(data);  // pour debug visuel
+//	stacks_visu(data);  // pour debug visuel
 	return ;
 }
 
@@ -56,7 +56,7 @@ void	push_to_b(t_vault *data)
 	data->moves++;
 //	add_to_moves_list(data, "pb");
 	printf("%s\n", "pb");
-	stacks_visu(data); // pour debug visuel
+//	stacks_visu(data); // pour debug visuel
 	return ;
 }
 

@@ -23,7 +23,7 @@ void	sort_3_a(t_vault *data)
 	unsigned int	x;
 
 	x = 0;
-	printf("%s\n", "Utilisation de sort_3_a");
+//	printf("%s\n", "Utilisation de sort_3_a");
 	check_qty_stack_a(data);
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
@@ -32,8 +32,8 @@ void	sort_3_a(t_vault *data)
 		x++;
 	is_min_a(data);
 	is_max_a(data);
-	printf("%s%d\n", "min_a = ", data->is_min_a);
-	printf("%s%d\n", "max_a = ", data->is_max_a);
+//	printf("%s%d\n", "min_a = ", data->is_min_a);
+//	printf("%s%d\n", "max_a = ", data->is_max_a);
 	if (data->qty_stack_a == 2)
 		rotate_to_last_a(data);
 	else if (data->stack_a[x] == data->is_min_a)
@@ -109,7 +109,7 @@ void	sort_4_a(t_vault *data)
 	unsigned int	x;
 
 	x = 0;
-	printf("%s\n", "Utilisation de sort_4_a");
+//	printf("%s\n", "Utilisation de sort_4_a");
 	check_qty_stack_a(data);
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
@@ -156,12 +156,12 @@ void	sort_5(t_vault *data)
 	unsigned int	x;
 	unsigned int	y;
 
-	printf("%s\n", "Utilisation de sort_5");	
+//	printf("%s\n", "Utilisation de sort_5");	
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
 	{
 		check_qty_stack_a(data);
-		printf("%s%d\n",  "qty A:", data->qty_stack_a);
+//		printf("%s%d\n",  "qty A:", data->qty_stack_a);
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
@@ -187,7 +187,7 @@ void	sort_5(t_vault *data)
 		check_order_a(data);
 		if (data->moves > 0 && data->is_in_order_a == 1 && data->qty_stack_b == 0)
 		{
-			printf("%s\n", "liste complètement triée !");
+//			printf("%s\n", "liste complètement triée !");
 			return ;
 		}
 	}
@@ -201,20 +201,23 @@ void	sort_100(t_vault *data)
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
 		return ;
-	printf("%s\n", "Utilisation de sort_100");	
+//	printf("%s\n", "Utilisation de sort_100");	
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
 	{
-		check_qty_stack_a(data);
-		printf("%s%d\n",  "qty A:", data->qty_stack_a);
+//		check_qty_stack_a(data);
+//		printf("%s%d\n",  "qty A:", data->qty_stack_a);
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
 		data->pivot = (data->qty_stack_a / 2 + x);
-		if (data->stack_a[x] > data->pivot)
+//		printf("%s%d\n", "pivot : ", data->pivot - 1);
+//		printf("%s%d\n", "x : ", x);
+		if (data->stack_a[x] > data->pivot - 1)
 			rotate_to_last_a(data);
-		else if (data->stack_a[x] <= data->pivot)
+		else if (data->stack_a[x] <= data->pivot - 1)
 			push_to_b(data);
+		check_qty_stack_a(data);
 	}
 	sort_3_a(data);
 	check_qty_stack_b(data);
@@ -232,27 +235,26 @@ void	sort_100(t_vault *data)
 		check_qty_stack_b(data);
 		check_reverse_order_b(data);
 		is_max_b(data);
-//		check_qty_stack_b(data);
-		printf("%s%d\n", "max pos b : ", data->max_b_pos);
+//		printf("%s%d\n", "max b pos : ", data->max_b_pos);
 		if (data->is_in_order_b == -2)
 			data->cost_b_to_top = 0;
 		else if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2 ) - 1))
 		{
-			printf("AAA\n");
+//			printf("AAA\n");
 			data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
 		}
 		else
 		{
-			printf("BBB\n");
+//			printf("BBB\n");
 			data->cost_b_to_top = data->max_b_pos - (data->index_max);
 		}
-		printf("%s%d\n", "cost_to_top_a : ", data->cost_a_to_top);
-		printf("%s%d\n", "cost_to_top_b : ", data->cost_b_to_top);
+//		printf("%s%d\n", "cost_to_top_a : ", data->cost_a_to_top);
+//		printf("%s%d\n", "cost_to_top_b : ", data->cost_b_to_top);
 		while (abs(data->cost_a_to_top) + abs(data->cost_b_to_top) != 0)
 		{
-			printf("%s%d\n", "cost_to_top_a : ", data->cost_a_to_top);
-			printf("%s%d\n", "cost_to_top_b : ", data->cost_b_to_top);
-			printf("%s%d\n", "max pos b : ", data->max_b_pos);
+//			printf("%s%d\n", "cost_to_top_a : ", data->cost_a_to_top);
+//			printf("%s%d\n", "cost_to_top_b : ", data->cost_b_to_top);
+//			printf("%s%d\n", "max pos b : ", data->max_b_pos);
 			if (data->cost_a_to_top < 0 && data->cost_b_to_top < 0)
 			{
 				rotate_both_to_first(data);
@@ -265,20 +267,20 @@ void	sort_100(t_vault *data)
 				data->cost_a_to_top -= 1;
 				data->cost_b_to_top -= 1;
 			}
-			else if (data->cost_a_to_top > 0)
+			else if (data->cost_a_to_top > 0 && data->cost_b_to_top == 0)
 			{
 				rotate_to_last_a(data);
 				data->cost_a_to_top -= 1;
 			}
-			else if (data->cost_a_to_top < 0)
+			else if (data->cost_a_to_top < 0 && data->cost_b_to_top == 0)
 			{
 				rotate_to_first_a(data);
 				data->cost_a_to_top += 1;
 			}
-			else if (data->cost_b_to_top > 0)
+			else if (data->cost_b_to_top > 0 && data->cost_a_to_top == 0)
 			{
 				rotate_to_last_b(data);
-				data->cost_b_to_top = data->cost_b_to_top - 1;
+				data->cost_b_to_top -= 1;
 			}
 			else
 			{
@@ -292,7 +294,7 @@ void	sort_100(t_vault *data)
 	check_order_a(data);
 	if (data->is_in_order_a == 1 && data->moves > 0)
 	{
-		printf("%s\n", "liste complètement triée !");
+//		printf("%s\n", "liste complètement triée !");
 		return ;
 	}
 }
