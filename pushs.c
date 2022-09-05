@@ -30,9 +30,7 @@ void	push_to_a(t_vault *data)
 	data->stack_a[y] = data->stack_b[x];
 	data->stack_b[x] = 0;
 	data->moves++;
-//	add_to_moves_list(data, "pa");
 	printf("%s\n", "pa");
-//	stacks_visu(data);  // pour debug visuel
 	return ;
 }
 
@@ -54,9 +52,6 @@ void	push_to_b(t_vault *data)
 	data->stack_b[y] = data->stack_a[x];
 	data->stack_a[x] = 0;
 	data->moves++;
-//	add_to_moves_list(data, "pb");
 	printf("%s\n", "pb");
-//	stacks_visu(data); // pour debug visuel
 	return ;
 }
-

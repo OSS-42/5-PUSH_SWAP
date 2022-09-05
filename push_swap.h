@@ -18,16 +18,6 @@
 # include <stdlib.h>
 # include "includes/libft/libft.h"
 
-/*****Node*****/
-
-/*typedef struct s_node
-{
-	char			*move;
-	struct s_node	*next;
-}	t_node;
-*/
-/*****Data*****/
-
 typedef struct s_vault
 {
 	int				error_code;
@@ -57,9 +47,6 @@ typedef struct s_vault
 	int				cost_a_to_top;
 	int				cost_b_to_top;
 	unsigned int	moves;
-	t_list			**moves_list; // pas utilisé
-	unsigned int	ind_moves_list; // pas utilisé
-	unsigned int	difficulty; // pas utilisé
 }	t_vault;
 
 /*****Fonctions*****/
@@ -80,8 +67,6 @@ void	rotate_both_to_first(t_vault *data);
 void	rotate_both_to_last(t_vault *data);
 void	check_qty_stack_a(t_vault *data);
 void	check_qty_stack_b(t_vault *data);
-void	stacks_visu(t_vault *data); //pour debug
-void	check_index(t_vault *data); //pour debug
 void	check_order_a(t_vault *data);
 void	check_reverse_order_b(t_vault *data);
 void	check_order_b(t_vault *data);
@@ -89,13 +74,14 @@ void	is_min_a(t_vault *data);
 void	is_max_a(t_vault *data);
 void	is_min_b(t_vault *data);
 void	is_max_b(t_vault *data);
-void	check_difficulty(t_vault *data); // pas utilisé
-//void	add_to_moves_list(t_vault *data, char *move_name); // pas utilisé
 void	sort_3_a(t_vault *data);
-void	sort_3_b(t_vault *data);
 void	sort_4_a(t_vault *data);
 void	sort_5(t_vault *data);
 void	sort_100(t_vault *data);
 void	sort_500(t_vault *data);
+
+/***** Pour debug *****/
+//void	stacks_visu(t_vault *data); //pour debug
+//void	check_index(t_vault *data); //pour debug
 
 #endif

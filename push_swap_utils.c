@@ -22,44 +22,32 @@ void	errors(t_vault *data) // a revoir
 		return ;
 	else if (data->error_code == 1)
 	{
-		fprintf( stderr, "%s\n%s\n", "Error", "Paramètres non valides");
+		fprintf(stderr, "%s\n%s\n", "Error", "Paramètres non valides");
 		free (data->args);
 	}
 	else if (data->error_code == 2)
 	{
-		fprintf( stderr, "%s\n%s\n", "Error", "Il y a des doublons");
+		fprintf(stderr, "%s\n%s\n", "Error", "Il y a des doublons");
 		free (data->args);
 		free (data->args_int);
 	}
 	else if (data->error_code == 3)
 	{
-		fprintf( stderr, "%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
+		fprintf(stderr, "%s\n%s\n", "Error",
+			"Paramètres en dehors des limites de INT");
 		free (data->args);
 		free (data->args_int);
 	}
 	else if (data->error_code == 4)
 	{
-		fprintf( stderr, "%s\n%s\n", "Error", "Trop de paramètres (over 500)");
+		fprintf(stderr, "%s\n%s\n", "Error", "Trop de paramètres (over 500)");
 		free (data->args);
 		free (data->args_int);
 	}
 	exit (0);
 }
 
-void	check_index(t_vault *data) // pour debug
-{
-	unsigned int	boucle;
-
-	boucle = 0;
-	while (boucle < data->nbr_args)
-	{
-		printf("%s%d%s%d%s%ld\n", "stack_a#", boucle, " : ", data->stack_a[boucle], " - arg = ", data->args_int[boucle]);
-		boucle++;
-	}
-	printf("%s\n", "rendu la, on peut commencer le triage !");
-}
-
-void	stacks_visu(t_vault *data) // pour debug
+/*void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
 
@@ -73,18 +61,19 @@ void	stacks_visu(t_vault *data) // pour debug
 	}
 	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
-}
+}*/
 
-void	check_difficulty(t_vault *data) // inutilisé
+/*
+void	check_index(t_vault *data) // pour debug
 {
-	unsigned int	x;
+	unsigned int	boucle;
 
-	x = 0;
-	data->difficulty = 0;
-	while (x < data->index_max)
+	boucle = 0;
+	while (boucle < data->nbr_args)
 	{
-		if (data->stack_a[x] > data->stack_a[x + 1])
-			data->difficulty++;
-		x++;
+		printf("%s%d%s%d%s%ld\n", "stack_a#", boucle, " : ",
+			data->stack_a[boucle], " - arg = ", data->args_int[boucle]);
+		boucle++;
 	}
-}
+	printf("%s\n", "rendu la, on peut commencer le triage !");
+}*/

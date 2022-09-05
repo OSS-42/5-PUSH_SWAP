@@ -12,13 +12,11 @@
 
 #include "push_swap.h"
 
-
 static void	free_data_args(t_vault *data)
 {
 	unsigned int	x;
 
 	x = 0;
-//	printf("%s\n", "je free");
 	while (x < data->nbr_args)
 	{
 		free (data->args[x]);
@@ -26,7 +24,6 @@ static void	free_data_args(t_vault *data)
 	}
 	return ;
 }
-
 
 static void	from_a_to_long(t_vault *data)
 {
@@ -38,9 +35,7 @@ static void	from_a_to_long(t_vault *data)
 		return ;
 	while (x < data->nbr_args)
 	{
-//		printf("%s%x : %s\n", "avant arg#", x, data->args[x]);
 		data->args_int[x] = ft_atolong(data->args[x]);
-//		printf("%s%x : %ld\n", "apres arg#", x, data->args_int[x]);
 		if (data->args_int[x] > INT_MAX || data->args_int[x] < INT_MIN)
 			data->error_code = 3;
 		x++;
@@ -127,20 +122,15 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
-		data.args = malloc(sizeof(char *) * argc);  // a free lorsque pas quotes
+		data.args = malloc(sizeof(char *) * argc); // a free lorsque pas quotes
 		if (!data.args)
 			return (0);
 		data.args = &argv[1];
 		data.nbr_args = argc - 1;
-//		printf("%s %u\n", "1.nbr args :", data.nbr_args);
 		check_args(&data);
-		//free_data_args(&data);
 	}
 	else
-	{
 		quotes_to_args(&data, argv);
-	}
-//	printf("%s\n", "rendu-là, on peut commencer l'indexation !");
 	indexing_numbers(&data);
 	return (0);
 }
