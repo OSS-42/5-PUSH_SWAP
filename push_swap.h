@@ -53,6 +53,7 @@ typedef struct s_vault
 	unsigned int	is_max_b;
 	unsigned int	max_b_pos;
 	unsigned int	pivot;
+	unsigned int	max_bits;
 	int				cost_a_to_top;
 	int				cost_b_to_top;
 	unsigned int	moves;
@@ -95,5 +96,6 @@ void	sort_3_b(t_vault *data);
 void	sort_4_a(t_vault *data);
 void	sort_5(t_vault *data);
 void	sort_100(t_vault *data);
+void	sort_500(t_vault *data);
 
 #endif

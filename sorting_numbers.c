@@ -12,9 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-envisager d'utiliser des algos differents selon la quantite de nombres
-*/
 void	check_order_b(t_vault *data)
 {
 	unsigned int	x;
@@ -179,17 +176,3 @@ void	is_max_b(t_vault *data)
 	}
 	return ;
 }
-
-/*
-	rotate_to_last_b(data);
-	rotate_to_first_a(data);
-	rotate_to_first_b(data);
-	push_to_a(data);
-	swap_top_a(data);
-	swap_top_b(data);
-	double_rotate_to_first(data);
-	double_rotate_to_back(data);
-	double_swap_top(data);
-
-	check_order(data);
-*/

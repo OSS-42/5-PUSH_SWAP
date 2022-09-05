@@ -12,12 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-lorsque sorting débute, ne pas oublier checker si B est vide avant d'arrêter
-
-A valider : vérifier la 'difficulté' est-ce juste les 2 premiers à switcher ou non ?
-*/
-
 void	sort_3_a(t_vault *data)
 {
 	unsigned int	x;
@@ -220,10 +214,17 @@ void	sort_100(t_vault *data)
 		x = 0;
 		while (data->stack_b[x] == 0)
 			x++;
-		if (data->index_max <= 100 && data->stack_b[x] < data->index_max / 3)
-			rotate_to_last_b(data);
-		else if (data->index_max > 100 && data->stack_b[x] < data->index_max / 4)
-			rotate_to_last_b(data);
+		if (data->stack_b[x] < data->index_max / 3 && data->stack_b[x] < data->stack_b[x + 1])
+		{
+			x = 0;
+			while (data->stack_a[x] == 0)
+				x++;
+			data->pivot = (data->qty_stack_a / 2 + x);
+			if (data->stack_a[x] > data->pivot - 1)
+				rotate_both_to_last(data);
+			else
+				rotate_to_last_b(data);
+		}
 		else if (data->stack_b[x] < data->stack_b[x + 1])
 			swap_top_b(data);
 		check_qty_stack_a(data);
@@ -305,5 +306,41 @@ void	sort_100(t_vault *data)
 	{
 //		printf("%s\n", "liste complètement triée !");
 		return ;
+	}
+}
+
+void	sort_500(t_vault *data)
+{
+	unsigned int	round;
+	unsigned int	x;
+	unsigned int	y;
+	unsigned int	value;
+
+	round = 0;
+	data->max_bits = 0;
+	while ((data->index_max >> data->max_bits) != 0)
+		data->max_bits++;
+	while (round < data->max_bits)
+	{
+		y = 0;
+		while (y <= data->index_max)
+		{
+			x = 0;
+			while (data->stack_a[x] == 0)
+				x++;
+			value = data->stack_a[x] >> 1;
+			if ((value & 1) == 1)
+				rotate_to_last_a(data);
+			else
+				push_to_b(data);
+			y++;
+		}
+		check_qty_stack_b(data);
+		while (data->qty_stack_b > 0)
+		{
+			push_to_a(data);
+			check_qty_stack_b(data);
+		}
+		round++;
 	}
 }

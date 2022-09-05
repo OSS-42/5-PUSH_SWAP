@@ -22,24 +22,24 @@ void	errors(t_vault *data) // a revoir
 		return ;
 	else if (data->error_code == 1)
 	{
-		printf("%s\n%s\n", "Error", "Paramètres non valides");
+		fprintf( stderr, "%s\n%s\n", "Error", "Paramètres non valides");
 		free (data->args);
 	}
 	else if (data->error_code == 2)
 	{
-		printf("%s\n%s\n", "Error", "Il y a des doublons");
+		fprintf( stderr, "%s\n%s\n", "Error", "Il y a des doublons");
 		free (data->args);
 		free (data->args_int);
 	}
 	else if (data->error_code == 3)
 	{
-		printf("%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
+		fprintf( stderr, "%s\n%s\n", "Error", "Paramètres en dehors des limites de INT");
 		free (data->args);
 		free (data->args_int);
 	}
 	else if (data->error_code == 4)
 	{
-		printf("%s\n%s\n", "Error", "Trop de paramètres (over 500)");
+		fprintf( stderr, "%s\n%s\n", "Error", "Trop de paramètres (over 500)");
 		free (data->args);
 		free (data->args_int);
 	}

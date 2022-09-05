@@ -14,31 +14,8 @@
 
 /*
 Chaque nombre doit obtenir son index par rapport aux autres nombres.
-L'indexation start à 1 pour que 0 = faux 'null' pendant le triage
-*/
-
-/*
-fonctionnement avec binaires (Radix sort), efficacité à prouver. idéal à > 128 ?
-watch for pa/pb inutiles en fin de boucle lors du sorting de A (dernière valeur à faire pa)
-
-long long	convert(t_vault *data, int n)
-{	
-	long long	bin;
-	int 		rem;
-	int 		i;
-
-	bin = 0;
-	rem = 1;
-	i = 1;
-	while (n != 0)
-	{
-		rem = n % 2;
-		n = n / 2;
-		bin = bin + rem * i;
-		i = i * 10;
-	}
-	return bin;
-}
+L'indexation start à 1 pour que 0 = faux 'null' pendant le triage et permettre 
+l<utilisation des positions.
 */
 
 void	algo_choice(t_vault *data)
@@ -46,7 +23,6 @@ void	algo_choice(t_vault *data)
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
 		return ;
-//	printf("%s\n", "liste non triée, commencons...");
 	data->stack_b = ft_calloc(data->index, 10);
 	data->moves = 0;
 	if (data->index_max <= 3)
@@ -56,10 +32,9 @@ void	algo_choice(t_vault *data)
 	else if (data->index_max == 5)
 		sort_5(data);
 	else if (data->index_max > 5 && data->index_max <= 500)
-	{
-//		printf("%s\n", "let's do sort_100");
 		sort_100(data);
-	}
+	/*else if (data->index_max > 100)
+		sort_500(data);*/
 	free (data->stack_b);
 	return ;
 }
@@ -104,6 +79,6 @@ void	indexing_numbers(t_vault *data)
 	algo_choice(data);
 	free (data->stack_a);
 	free (data->switches);
-	free (data->args_int);
+//	free (data->args_int);
 	return ;
 }
