@@ -12,19 +12,6 @@
 
 #include "push_swap.h"
 
-static void	free_data_args(t_vault *data)
-{
-	unsigned int	x;
-
-	x = 0;
-	while (x < data->nbr_args)
-	{
-		free (data->args[x]);
-		x++;
-	}
-	return ;
-}
-
 static void	from_a_to_long(t_vault *data)
 {
 	unsigned int	x;
@@ -88,11 +75,6 @@ static int	check_args(t_vault *data)
 		x++;
 	}
 	errors(data);
-	from_a_to_long(data);
-	if (data->nbr_args == 1)
-		return (data->args_int[1]);
-	if (data->nbr_args > 1)
-		check_doubles(data);
 	return (0);
 }
 
@@ -108,7 +90,6 @@ static int	quotes_to_args(t_vault *data, char **argv)
 	errors(data);
 	if (data->nbr_args == 1)
 		return (*data->args[1]);
-	free_data_args(data);
 	return (0);
 }
 
@@ -131,6 +112,11 @@ int	main(int argc, char **argv)
 	}
 	else
 		quotes_to_args(&data, argv);
+	from_a_to_long(&data);
+	if (data.nbr_args == 1)
+		return (data.args_int[1]);
+	if (data.nbr_args > 1)
+		check_doubles(&data);
 	indexing_numbers(&data);
 	return (0);
 }

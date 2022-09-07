@@ -44,6 +44,8 @@ typedef struct s_vault
 	unsigned int	max_b_pos;
 	unsigned int	pivot;
 	unsigned int	max_bits;
+	unsigned int	round;
+	unsigned int	value;
 	int				cost_a_to_top;
 	int				cost_b_to_top;
 	unsigned int	moves;

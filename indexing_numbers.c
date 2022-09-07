@@ -18,6 +18,44 @@ L'indexation start à 1 pour que 0 = faux 'null' pendant le triage et permettre
 l<utilisation des positions.
 */
 
+static void	indexing_loop(t_vault *data)
+{
+	unsigned int	x;
+	unsigned int	y;
+
+	x = 0;
+	y = 0;
+	while (y++ < data->nbr_args)
+	{
+		while (x < data->nbr_args)
+		{
+			if (data->min > data->args_int[x] && data->switches[x] == 0)
+			{
+				data->position = x;
+				data->min = data->args_int[x];
+			}
+			x++;
+		}
+		data->switches[data->position] = 1;
+		data->stack_a[data->position] = data->index;
+		x = 0;
+		while (data->switches[x] == 1)
+			x++;
+		data->index++;
+		data->position = x;
+		data->min = data->args_int[x];
+	}
+}
+
+static void	struct_init(t_vault *data)
+{
+	data->index = 1;
+	data->position = 0;
+	data->switches = ft_calloc(data->nbr_args, 10);
+	data->stack_a = ft_calloc(data->nbr_args, 10);
+	data->min = INT_MAX;
+}
+
 void	algo_choice(t_vault *data)
 {
 	check_order_a(data);
@@ -41,37 +79,8 @@ void	algo_choice(t_vault *data)
 
 void	indexing_numbers(t_vault *data)
 {
-	unsigned int	x;
-	unsigned int	y;
-
-	x = 0;
-	y = 0;
-	data->index = 1;
-	data->position = 0;
-	data->switches = ft_calloc(data->nbr_args, 10);
-	data->stack_a = ft_calloc(data->nbr_args, 10);
-	data->min = INT_MAX;
-	while (y < data->nbr_args)
-	{
-		while (x < data->nbr_args)
-		{
-			if (data->min > data->args_int[x] && data->switches[x] == 0)
-			{
-				data->position = x;
-				data->min = data->args_int[x];
-			}
-			x++;
-		}
-		data->switches[data->position] = 1;
-		data->stack_a[data->position] = data->index;
-		x = 0;
-		while (data->switches[x] == 1)
-			x++;
-		data->index++;
-		data->position = x;
-		data->min = data->args_int[x];
-		y++;
-	}
+	struct_init(data);
+	indexing_loop(data);
 	data->index_max = data->index - 1;
 	data->is_in_order_a = 0;
 	algo_choice(data);
