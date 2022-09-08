@@ -59,69 +59,8 @@ void	sort_3_init(t_vault *data)
 	return ;
 }
 
-void	sort_4_a(t_vault *data)
+void	sort_5_part2(t_vault *data, unsigned int x)
 {
-	unsigned int	x;
-
-	x = 0;
-	check_qty_stack_a(data);
-	check_order_a(data);
-	if (data->is_in_order_a == 1)
-		return ;
-	while (data->stack_a[x] == 0)
-		x++;
-	is_min_a(data);
-	is_max_a(data);
-	if (data->qty_stack_a == 2)
-		rotate_to_last_a(data);
-	if (data->qty_stack_a == 3)
-		sort_3_init(data);
-	else if (data->stack_a[x] == data->is_min_a)
-	{
-		push_to_b(data);
-		sort_3_init(data);
-		push_to_a(data);
-	}
-	else if (data->stack_a[x] == data->is_max_a)
-	{
-		if (data->stack_a[x + 1] == data->is_min_a)
-			rotate_to_last_a(data);
-		else
-		{
-			rotate_to_first_a(data);
-			sort_4_a(data);
-		}
-	}
-	else if (data->stack_a[x + 1] == data->is_min_a)
-	{
-		swap_top_a(data);
-		sort_4_a(data);
-	}
-	else
-	{
-		rotate_to_first_a(data);
-		sort_4_a(data);
-	}
-	check_order_a(data);
-}
-
-void	sort_5(t_vault *data)
-{
-	unsigned int	x;
-
-	check_qty_stack_a(data);
-	while (data->qty_stack_a > 3)
-	{
-		x = 0;
-		while (data->stack_a[x] == 0)
-			x++;
-		if (data->stack_a[x] > data->qty_stack_a / 2 + x)
-			rotate_to_last_a(data);
-		else if (data->stack_a[x] <= data->qty_stack_a / 2 + x)
-			push_to_b(data);
-		check_qty_stack_a(data);
-	}
-	sort_3_init(data);
 	check_qty_stack_b(data);
 	check_reverse_order_b(data);
 	if (data->is_in_order_b != -2)
@@ -143,6 +82,38 @@ void	sort_5(t_vault *data)
 	return ;
 }
 
+void	sort_5(t_vault *data)
+{
+	unsigned int	x;
+
+	check_qty_stack_a(data);
+	while (data->qty_stack_a > 3)
+	{
+		x = 0;
+		while (data->stack_a[x] == 0)
+			x++;
+		if (data->stack_a[x] > data->qty_stack_a / 2 + x)
+			rotate_to_last_a(data);
+		else if (data->stack_a[x] <= data->qty_stack_a / 2 + x)
+			push_to_b(data);
+		check_qty_stack_a(data);
+	}
+	sort_3_init(data);
+	sort_5_part2(data, x);
+	
+	return ;
+}
+
+unsigned int	position_in_a(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_a[x] == 0)
+		x++;
+	return (x);
+}
+
 void	sort_100(t_vault *data)
 {
 	unsigned int	x;
@@ -153,9 +124,11 @@ void	sort_100(t_vault *data)
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
 	{
-		x = 0;
+/*		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
+*/		
+		position_in_a(data);
 		data->pivot = (data->qty_stack_a / 2 + x);
 		if (data->stack_a[x] > data->pivot - 1)
 			rotate_to_last_a(data);

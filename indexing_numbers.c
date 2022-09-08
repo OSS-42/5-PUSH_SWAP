@@ -15,7 +15,8 @@
 /*
 Chaque nombre doit obtenir son index par rapport aux autres nombres.
 L'indexation start à 1 pour que 0 = faux 'null' pendant le triage et permettre 
-l<utilisation des positions.
+l'utilisation des positions.
+
 */
 
 static void	indexing_loop(t_vault *data)

@@ -14,6 +14,10 @@
 
 /*
 attention, Error à envoyer sur stdout et le reste sur stderr
+Code 1 : Paramètres non valide
+Code 2 : Doublons
+Code 3 : Hors limites INT
+Code 4 : Over 500 values
 */
 
 void	errors(t_vault *data) // a revoir
@@ -21,24 +25,22 @@ void	errors(t_vault *data) // a revoir
 	if (data->error_code == 0)
 		return ;
 	else if (data->error_code == 1)
-		fprintf(stderr, "%s\n%s\n", "Error", "Paramètres non valides");
+		write(2, "Error\n", 6);
 	else if (data->error_code == 2)
 	{
-		fprintf(stderr, "%s\n%s\n", "Error", "Il y a des doublons");
+		write(2, "Error\n", 6);
 		free (data->args_int);
 	}
 	else if (data->error_code == 3)
 	{
-		fprintf(stderr, "%s\n%s\n", "Error",
-			"Paramètres en dehors des limites de INT");
+		write(2, "Error\n", 6);
 		free (data->args_int);
 	}
-	else if (data->error_code == 4)
+/*	else if (data->error_code == 4)
 	{
-		fprintf(stderr, "%s\n%s\n", "Error", "Trop de paramètres (over 500)");
+		write(2, "Error\n", 6);
 		free (data->args_int);
-	}
-	free (data->args);
+	}*/
 	exit (0);
 }
 

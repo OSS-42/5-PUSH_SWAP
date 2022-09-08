@@ -12,6 +12,10 @@
 
 #include "push_swap.h"
 
+/*
+min = -2147483648 ; max = 2147483647
+*/
+
 static void	from_a_to_long(t_vault *data)
 {
 	unsigned int	x;
@@ -47,8 +51,8 @@ static void	check_doubles(t_vault *data)
 		}
 		x++;
 	}
-	if (data->nbr_args > 500)
-		data->error_code = 4;
+//	if (data->nbr_args > 500)
+//		data->error_code = 4;
 	errors(data);
 	return ;
 }
