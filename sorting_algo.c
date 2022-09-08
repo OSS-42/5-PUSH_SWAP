@@ -108,33 +108,32 @@ void	sort_4_a(t_vault *data)
 void	sort_5(t_vault *data)
 {
 	unsigned int	x;
-	unsigned int	y;
 
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
 	{
-		check_qty_stack_a(data);
 		x = 0;
 		while (data->stack_a[x] == 0)
 			x++;
-		if (data->qty_stack_a == 3)
-			break ;
-		if (data->stack_a[x] > data->index_max / 2)
+		if (data->stack_a[x] > data->qty_stack_a / 2 + x)
 			rotate_to_last_a(data);
-		else if (data->stack_a[x] <= data->index_max / 2)
+		else if (data->stack_a[x] <= data->qty_stack_a / 2 + x)
 			push_to_b(data);
+		check_qty_stack_a(data);
 	}
 	sort_3_init(data);
 	check_qty_stack_b(data);
-	is_max_b(data);
-	y = 0;
-	while (data->stack_b[y] == 0)
-		y++;
-	if (data->stack_b[y] != data->is_max_b)
-		rotate_to_first_b(data);
+	check_reverse_order_b(data);
+	if (data->is_in_order_b != -2)
+		rotate_to_last_b(data);
 	while (data->qty_stack_b > 0)
 	{
 		push_to_a(data);
+		x = 0;
+		while (data->stack_a[x] == 0)
+			x++;
+		if (data->stack_a[x] > data->stack_a[x + 1])
+			swap_top_a(data);
 		check_qty_stack_b(data);
 		check_order_a(data);
 		if (data->moves > 0 && data->is_in_order_a == 1
