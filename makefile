@@ -28,7 +28,8 @@ SRC = push_swap.c\
 	  swaps.c\
 	  single_rotations.c\
 	  double_rotations.c\
-	  sorting_algo.c
+	  sorting_algo.c\
+	  check_order.c
 
 #SRC_BONUS = \
 

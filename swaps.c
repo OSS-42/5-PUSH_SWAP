@@ -91,8 +91,7 @@ void	swap_both_top(t_vault *data)
 	check_qty_stack_b(data);
 	if (data->qty_stack_a > 1)
 	{
-		while (data->stack_a[x] == 0)
-			x++;
+		while (data->stack_a[x++] == 0)
 		data->nbr_temp = data->stack_a[x];
 		data->stack_a[x] = data->stack_a[x + 1];
 		data->stack_a[x + 1] = data->nbr_temp;
@@ -100,8 +99,7 @@ void	swap_both_top(t_vault *data)
 	else if (data->qty_stack_b > 1)
 	{
 		x = 0;
-		while (data->stack_b[x] == 0)
-			x++;
+		while (data->stack_b[x++] == 0)
 		data->nbr_temp = data->stack_b[x];
 		data->stack_b[x] = data->stack_b[x + 1];
 		data->stack_b[x + 1] = data->nbr_temp;
