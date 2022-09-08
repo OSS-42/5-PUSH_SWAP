@@ -64,7 +64,7 @@ void	algo_choice(t_vault *data)
 	data->stack_b = ft_calloc(data->index, 10);
 	data->moves = 0;
 	if (data->index_max <= 3)
-		sort_3_a(data);
+		sort_3_init(data);
 	else if (data->index_max == 4)
 		sort_4_a(data);
 	else if (data->index_max == 5)

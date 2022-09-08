@@ -76,7 +76,7 @@ void	is_min_a(t_vault *data);
 void	is_max_a(t_vault *data);
 void	is_min_b(t_vault *data);
 void	is_max_b(t_vault *data);
-void	sort_3_a(t_vault *data);
+void	sort_3_init(t_vault *data);
 void	sort_4_a(t_vault *data);
 void	sort_5(t_vault *data);
 void	sort_100(t_vault *data);

@@ -12,19 +12,8 @@
 
 #include "push_swap.h"
 
-void	sort_3_a(t_vault *data)
+void	sort_3_loop(t_vault *data, unsigned int x)
 {
-	unsigned int	x;
-
-	x = 0;
-	check_qty_stack_a(data);
-	check_order_a(data);
-	if (data->is_in_order_a == 1)
-		return ;
-	while (data->stack_a[x] == 0)
-		x++;
-	is_min_a(data);
-	is_max_a(data);
 	if (data->qty_stack_a == 2)
 		rotate_to_last_a(data);
 	else if (data->stack_a[x] == data->is_min_a)
@@ -49,6 +38,23 @@ void	sort_3_a(t_vault *data)
 		else
 			rotate_to_first_a(data);
 	}
+	return ;
+}
+
+void	sort_3_init(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	check_qty_stack_a(data);
+	check_order_a(data);
+	if (data->is_in_order_a == 1)
+		return ;
+	while (data->stack_a[x] == 0)
+		x++;
+	is_min_a(data);
+	is_max_a(data);
+	sort_3_loop(data, x);
 	check_order_a(data);
 	return ;
 }
@@ -69,11 +75,11 @@ void	sort_4_a(t_vault *data)
 	if (data->qty_stack_a == 2)
 		rotate_to_last_a(data);
 	if (data->qty_stack_a == 3)
-		sort_3_a(data);
+		sort_3_init(data);
 	else if (data->stack_a[x] == data->is_min_a)
 	{
 		push_to_b(data);
-		sort_3_a(data);
+		sort_3_init(data);
 		push_to_a(data);
 	}
 	else if (data->stack_a[x] == data->is_max_a)
@@ -103,7 +109,7 @@ void	sort_5(t_vault *data)
 {
 	unsigned int	x;
 	unsigned int	y;
-	
+
 	check_qty_stack_a(data);
 	while (data->qty_stack_a > 3)
 	{
@@ -118,7 +124,7 @@ void	sort_5(t_vault *data)
 		else if (data->stack_a[x] <= data->index_max / 2)
 			push_to_b(data);
 	}
-	sort_3_a(data);
+	sort_3_init(data);
 	check_qty_stack_b(data);
 	is_max_b(data);
 	y = 0;
@@ -175,7 +181,7 @@ void	sort_100(t_vault *data)
 			swap_top_b(data);
 		check_qty_stack_a(data);
 	}
-	sort_3_a(data);
+	sort_3_init(data);
 	check_qty_stack_b(data);
 	while (data->qty_stack_b > 0)
 	{
