@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/11 14:55:43 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:39:05 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_vault
 	unsigned int	is_max_b;
 	unsigned int	max_b_pos;
 	unsigned int	pivot;
+	unsigned int	pivot_round;
 	unsigned int	max_bits;
 	unsigned int	round;
 	unsigned int	value;
