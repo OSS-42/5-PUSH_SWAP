@@ -44,7 +44,7 @@ void	errors(t_vault *data) // a revoir
 	exit (0);
 }
 
-/*void	stacks_visu(t_vault *data) // pour debug
+void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
 
@@ -58,7 +58,7 @@ void	errors(t_vault *data) // a revoir
 	}
 	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
-}*/
+}
 
 /*void	check_index(t_vault *data) // pour debug
 {

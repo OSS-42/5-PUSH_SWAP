@@ -84,7 +84,7 @@ void	sort_100(t_vault *data);
 void	sort_500(t_vault *data);
 
 /***** Pour debug *****/
-//void	stacks_visu(t_vault *data); //pour debug
+void	stacks_visu(t_vault *data); //pour debug
 //void	check_index(t_vault *data); //pour debug
 
 #endif
