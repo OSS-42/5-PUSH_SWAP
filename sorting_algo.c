@@ -124,6 +124,7 @@ void	sort_100(t_vault *data) // a revoir
 {
 	unsigned int	x;
 	unsigned int	y;
+	unsigned int	z;
 
 	check_order_a(data);
 	if (data->is_in_order_a == 1)
@@ -187,29 +188,106 @@ void	sort_100(t_vault *data) // a revoir
 //	stacks_visu(data);
 	while (data->qty_stack_b > 0)
 	{
+		stacks_visu(data);
 		check_qty_stack_a(data);
 		check_order_a(data);
+		x = 0;
+		while (data->stack_a[x] == 0)
+			x++;
+		y = 0;
+		while (data->stack_b[y] == 0)
+			y++;
 		is_min_a(data);
-		if (data->is_in_order_a == 1)
+		is_max_b(data);
+		z = 0;
+		while (data->is_min_a < data->is_max_b)
+		{
+			x = 0;
+			while (data->stack_a[x] == 0)
+				x++;
+			y = 0;
+			while (data->stack_b[y] == 0)
+				y++;
+//			stacks_visu(data);
+			if (data->stack_b[y] == data->index_max)
+			{
+				push_to_a(data);
+				rotate_to_last_a(data);
+//				stacks_visu(data);
+			}
+			else if (data->stack_a[x] < data->stack_b[y] && data->stack_a[x + 1] < data->stack_b[y])
+			{
+				rotate_to_last_a(data);
+//				stacks_visu(data);
+				z++;
+			}
+			else if (data->stack_a[x] < data->stack_b[y] && data->stack_a[x + 1] > data->stack_b[y])
+			{
+				rotate_to_last_a(data);
+				push_to_a(data);
+//				stacks_visu(data);
+				z++;
+			}
+			else
+			{
+				stacks_visu(data);
+				is_min_a(data);
+				is_max_b(data);
+				check_qty_stack_a(data);
+				if (data->is_in_order_a == 1)
+					data->cost_a_to_top = 0;
+				else if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
+					data->cost_a_to_top = data->min_a_pos - ((data->index_max - 1) - (data->qty_stack_a - 1));
+				else
+					data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
+				check_qty_stack_b(data);
+				check_reverse_order_b(data);
+				if (data->is_in_order_b == -2)
+					data->cost_b_to_top = 0;
+				else if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2) - 1))
+					data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
+				else
+					data->cost_b_to_top = data->max_b_pos - (data->index_max);
+				printf("%s%d\n", "1.cost a :", data->cost_a_to_top);
+				printf("%s%d\n", "1.cost b :", data->cost_b_to_top);
+				break ;
+			}
+			while (z > 0 && data->stack_a[x] > data->stack_b[y])
+			{
+				rotate_to_first_a(data);
+//				stacks_visu(data);
+				z--;
+			}
+//			stacks_visu(data);
+			is_min_a(data);
+			is_max_b(data);
+			printf("%s%d\n", "min a : ", data->is_min_a);
+			printf("%s%d\n", "max b : ", data->is_max_b);
+		}
+		stacks_visu(data);
+		is_min_a(data);
+		check_qty_stack_a(data);
+		check_order_a(data);
+		if (data->is_in_order_a == 1 && data->is_min_a > data->is_max_b)
 			data->cost_a_to_top = 0;
-		else if (data->min_a_pos
-			<= (data->index_max - (data->qty_stack_a / 2) - 1))
-				data->cost_a_to_top = data->min_a_pos
-				- ((data->index_max - 1) - (data->qty_stack_a - 1));
+		else if (data->min_a_pos <= (data->index_max - (data->qty_stack_a / 2) - 1))
+			data->cost_a_to_top = data->min_a_pos - ((data->index_max - 1) - (data->qty_stack_a - 1));
 		else
 			data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
-//		printf("%s%d\n", "1.cost a :", data->cost_a_to_top);
 		check_qty_stack_b(data);
 		check_reverse_order_b(data);
 		is_max_b(data);
 		if (data->is_in_order_b == -2)
 			data->cost_b_to_top = 0;
-		else if (data->max_b_pos
-			<= (data->index_max - (data->qty_stack_b / 2) - 1))
-				data->cost_b_to_top = data->max_b_pos
-				- ((data->index_max - 1) - (data->qty_stack_b - 1));
+		else if (data->max_b_pos <= (data->index_max - (data->qty_stack_b / 2) - 1))
+			data->cost_b_to_top = data->max_b_pos - ((data->index_max - 1) - (data->qty_stack_b - 1));
 		else
 			data->cost_b_to_top = data->max_b_pos - (data->index_max);
+		printf("%s%d\n", "2.cost a :", data->cost_a_to_top);
+		printf("%s%d\n", "2.cost b :", data->cost_b_to_top);
+//		exit (0);
+//		stacks_visu(data);
+//		printf("%s%d\n", "1.cost a :", data->cost_a_to_top);
 //		printf("%s%d\n", "1.cost b :", data->cost_b_to_top);
 		while (abs(data->cost_a_to_top) + abs(data->cost_b_to_top) != 0)
 		{
@@ -259,7 +337,7 @@ void	sort_100(t_vault *data) // a revoir
 				data->cost_b_to_top += 1;
 			}
 		}
-//		stacks_visu(data);
+		stacks_visu(data);
 		push_to_a(data);
 		check_qty_stack_b(data);
 	}
