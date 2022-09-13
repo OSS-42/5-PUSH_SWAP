@@ -154,12 +154,18 @@ void	sort_100(t_vault *data) // a revoir
 			while (data->stack_a[x] == 0)
 				x++;
 			check_order_a(data);
+			is_max_a(data);
+			is_max_a(data);
 			check_qty_stack_b(data);
+			if (data->stack_a[x + 1] == data->is_min_a)
+				swap_top_a(data);
+			else if (data->stack_a[x] > data->stack_a[data->index_max - 1] && data->stack_a[data->index_max - 1] < data->stack_a[x + 1] && data->stack_a[x] <= data->pivot * y)
+				rotate_to_first_a(data);
 			if (data->stack_a[x] > data->pivot * y)
 				rotate_to_last_a(data);
 			else if (data->stack_a[x] <= data->pivot * y)
 				push_to_b(data);
-	//		stacks_visu(data);
+//			stacks_visu(data);
 			check_qty_stack_b(data);
 			x = 0;
 			while (data->stack_b[x] == 0)
@@ -169,15 +175,16 @@ void	sort_100(t_vault *data) // a revoir
 					rotate_to_last_b(data);
 			else if (data->stack_b[x] < data->stack_b[x + 1])
 				swap_top_b(data);
-	//		stacks_visu(data);
+//			stacks_visu(data);
 			check_qty_stack_a(data);
 			check_qty_stack_b(data);		
 		}
 		y++;
-		printf("%s\n", "next loop");
+//		printf("%s\n", "next loop");
 	} 
-	printf("%s\n", "sort 3");
+//	printf("%s\n", "sort 3");
 	sort_3_init(data);
+//	stacks_visu(data);
 	while (data->qty_stack_b > 0)
 	{
 		check_qty_stack_a(data);
@@ -191,7 +198,7 @@ void	sort_100(t_vault *data) // a revoir
 				- ((data->index_max - 1) - (data->qty_stack_a - 1));
 		else
 			data->cost_a_to_top = data->min_a_pos - (data->index_max - 1);
-		printf("%s%d\n", "1.cost a :", data->cost_a_to_top);
+//		printf("%s%d\n", "1.cost a :", data->cost_a_to_top);
 		check_qty_stack_b(data);
 		check_reverse_order_b(data);
 		is_max_b(data);
@@ -203,64 +210,61 @@ void	sort_100(t_vault *data) // a revoir
 				- ((data->index_max - 1) - (data->qty_stack_b - 1));
 		else
 			data->cost_b_to_top = data->max_b_pos - (data->index_max);
-		printf("%s%d\n", "1.cost b :", data->cost_a_to_top);
+//		printf("%s%d\n", "1.cost b :", data->cost_b_to_top);
 		while (abs(data->cost_a_to_top) + abs(data->cost_b_to_top) != 0)
 		{
+//			stacks_visu(data);
 			if (data->cost_a_to_top > 0 && data->cost_b_to_top > 0)
 			{
-				printf("%s%d\n", "3.cost a :", data->cost_a_to_top);
-				printf("%s%d\n", "3.cost b :", data->cost_a_to_top);
+//				printf("%s%d\n", "3.cost a :", data->cost_a_to_top);
+//				printf("%s%d\n", "3.cost b :", data->cost_a_to_top);
 				rotate_both_to_last(data);
-				printf("%s\n", "hello");
 				data->cost_a_to_top -= 1;
 				data->cost_b_to_top -= 1;
 			}
 			else if (data->cost_a_to_top < 0 && data->cost_b_to_top < 0)
 			{
-				printf("%s%d\n", "2.cost a :", data->cost_a_to_top);
-				printf("%s%d\n", "2.cost b :", data->cost_a_to_top);
+//				printf("%s%d\n", "2.cost a :", data->cost_a_to_top);
+//				printf("%s%d\n", "2.cost b :", data->cost_a_to_top);
 				rotate_both_to_first(data);
-				printf("%s\n", "salut");
 				data->cost_a_to_top += 1;
 				data->cost_b_to_top += 1;
 			}
-			else if (data->cost_a_to_top > 0 && data->cost_b_to_top == 0)
-			{
-				printf("%s%d\n", "4.cost a :", data->cost_a_to_top);
-				printf("%s%d\n", "4.cost b :", data->cost_a_to_top);
-				rotate_to_last_a(data);
-				printf("%s\n", "guten tag");
-				data->cost_a_to_top -= 1;
-			}
 			else if (data->cost_a_to_top < 0 && data->cost_b_to_top == 0)
 			{
-				printf("%s%d\n", "5.cost a :", data->cost_a_to_top);
-				printf("%s%d\n", "5.cost b :", data->cost_a_to_top);
+//				printf("%s%d\n", "5.cost a :", data->cost_a_to_top);
+//				printf("%s%d\n", "5.cost b :", data->cost_a_to_top);
 				rotate_to_first_a(data);
-				printf("%s\n", "ciao");
 				data->cost_a_to_top += 1;
 			}
 			else if (data->cost_b_to_top > 0 && data->cost_a_to_top == 0)
 			{
-				printf("%s%d\n", "6.cost a :", data->cost_a_to_top);
-				printf("%s%d\n", "6.cost b :", data->cost_a_to_top);
+//				printf("%s%d\n", "6.cost a :", data->cost_a_to_top);
+//				printf("%s%d\n", "6.cost b :", data->cost_a_to_top);
 				rotate_to_last_b(data);
-				printf("%s\n", "allo");
 				data->cost_b_to_top -= 1;
+			}
+			else if (data->cost_a_to_top > 0 && data->cost_b_to_top == 0)
+			{
+//				printf("%s%d\n", "4.cost a :", data->cost_a_to_top);
+//				printf("%s%d\n", "4.cost b :", data->cost_a_to_top);
+				rotate_to_last_a(data);
+				data->cost_a_to_top -= 1;
 			}
 			else
 			{
-				printf("%s%d\n", "7.cost a :", data->cost_a_to_top);
-				printf("%s%d\n", "7.cost b :", data->cost_a_to_top);
+//				printf("%s%d\n", "7.cost a :", data->cost_a_to_top);
+//				printf("%s%d\n", "7.cost b :", data->cost_a_to_top);
 				rotate_to_first_b(data);
-				printf("%s\n", "banzai");
 				data->cost_b_to_top += 1;
 			}
 		}
+//		stacks_visu(data);
 		push_to_a(data);
 		check_qty_stack_b(data);
 	}
-	printf("%s\n", "bye bye");
+//	stacks_visu(data);
+//	printf("%s\n", "bye bye");
 	check_order_a(data);
 	if (data->is_in_order_a == 1 && data->moves > 0)
 		return ;
