@@ -21,14 +21,12 @@ void	rotate_to_last_a(t_vault *data)
 {
 	unsigned int	x;
 
-	x = 0;
 	check_qty_stack_a(data);
 	if (data->qty_stack_a <= 1)
 		return ;
 	else
 	{
-		while (data->stack_a[x] == 0)
-			x++;
+		x = position_x_a(data);
 		while (x < data->index_max - 1 && data->stack_a[x] != 0)
 		{
 			data->nbr_temp = data->stack_a[x];
@@ -37,7 +35,8 @@ void	rotate_to_last_a(t_vault *data)
 			x++;
 		}
 		data->moves++;
-		printf("%s\n", "ra");
+		if (data->is_it_both != 1)
+			printf("%s\n", "ra");
 	}
 	return ;
 }
@@ -60,7 +59,8 @@ void	rotate_to_first_a(t_vault *data)
 			x--;
 		}
 		data->moves++;
-		printf("%s\n", "rra");
+		if (data->is_it_both != 1)
+			printf("%s\n", "rra");
 	}
 }
 
@@ -84,7 +84,8 @@ void	rotate_to_last_b(t_vault *data)
 			x++;
 		}
 		data->moves++;
-		printf("%s\n", "rb");
+		if (data->is_it_both != 1)
+			printf("%s\n", "rb");
 	}
 }
 
@@ -106,6 +107,7 @@ void	rotate_to_first_b(t_vault *data)
 			x--;
 		}
 		data->moves++;
-		printf("%s\n", "rrb");
+		if (data->is_it_both != 1)
+			printf("%s\n", "rrb");
 	}
 }

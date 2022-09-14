@@ -82,6 +82,7 @@ void	indexing_numbers(t_vault *data)
 	indexing_loop(data);
 	data->index_max = data->index - 1;
 	data->is_in_order_a = 0;
+	data->is_it_both = 0;
 	algo_choice(data);
 	free (data->stack_a);
 	free (data->switches);

@@ -14,64 +14,24 @@
 
 void	rotate_both_to_first(t_vault *data)
 {
-	unsigned int	x;
-
-	x = data->index_max - 1;
-	check_qty_stack_a(data);
-	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
-		return ;
-	while (x > 0 && data->stack_a[x] != 0)
-	{
-		data->nbr_temp = data->stack_a[x];
-		data->stack_a[x] = data->stack_a[x - 1];
-		data->stack_a[x - 1] = data->nbr_temp;
-		x--;
-	}
-	check_qty_stack_a(data);
-	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
-		return ;
-	x = data->index_max - 1;
-	while (x > 0 && data->stack_b[x] != 0)
-	{
-		data->nbr_temp = data->stack_b[x];
-		data->stack_b[x] = data->stack_b[x - 1];
-		data->stack_b[x - 1] = data->nbr_temp;
-		x--;
-	}
-	data->moves++;
+	data->is_it_both = 1;
+	rotate_to_first_a(data);
+	rotate_to_first_b(data);
+	data->is_it_both = 0;
+	data->moves -= 1;
+	data->cost_a_to_top += 1;
+	data->cost_b_to_top += 1;
 	printf("%s\n", "rrr");
 }
 
 void	rotate_both_to_last(t_vault *data)
 {
-	unsigned int	x;
-
-	x = 0;
-	check_qty_stack_a(data);
-	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
-		return ;
-	while (data->stack_a[x] == 0)
-			x++;
-	while (x < data->index_max - 1 && data->stack_a[x] != 0)
-	{
-		data->nbr_temp = data->stack_a[x];
-		data->stack_a[x] = data->stack_a[x + 1];
-		data->stack_a[x + 1] = data->nbr_temp;
-		x++;
-	}
-	check_qty_stack_a(data);
-	if (data->qty_stack_a == 1 || data->qty_stack_a == 0)
-		return ;
-	x = 0;
-	while (data->stack_b[x] == 0)
-		x++;
-	while (x < data->index_max - 1 && data->stack_b[x] != 0)
-	{
-		data->nbr_temp = data->stack_b[x];
-		data->stack_b[x] = data->stack_b[x + 1];
-		data->stack_b[x + 1] = data->nbr_temp;
-		x++;
-	}
-	data->moves++;
+	data->is_it_both = 1;
+	rotate_to_last_a(data);
+	rotate_to_last_b(data);
+	data->is_it_both = 0;
+	data->moves -= 1;
+	data->cost_a_to_top -= 1;
+	data->cost_b_to_top -= 1;
 	printf("%s\n", "rr");
 }

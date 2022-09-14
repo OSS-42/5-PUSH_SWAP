@@ -95,31 +95,3 @@ void	is_max_b(t_vault *data)
 	}
 	return ;
 }
-
-void	next_move_stack_a(t_vault *data, unsigned int y)
-{
-	unsigned int	x;
-
-	x = 0;
-	while (data->stack_a[x] == 0)
-		x++;
-	data->next_nbr_ra = 0;
-	while (data->stack_a[x] > data->pivot * y
-		|| data->stack_a[x] == data->index_max
-		|| data->stack_a[x] == data->index_max - 1
-		|| data->stack_a[x] == data->index_max - 2)
-		{
-			x++;
-			data->next_nbr_ra++;
-		}
-	x = data->index_max - 1;
-	data->next_nbr_rra = 1;
-	while (data->stack_a[x] >= data->pivot * y
-		|| data->stack_a[x] == data->index_max
-		|| data->stack_a[x] == data->index_max - 1
-		|| data->stack_a[x] == data->index_max - 2)
-		{
-			x--;
-			data->next_nbr_rra++;
-		}
-}

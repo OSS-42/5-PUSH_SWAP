@@ -17,10 +17,10 @@ attention, Error à envoyer sur stdout et le reste sur stderr
 Code 1 : Paramètres non valide
 Code 2 : Doublons
 Code 3 : Hors limites INT
-Code 4 : Over 500 values
+Code 4 : Over 500 values - pas implémenté, car pas demandé
 */
 
-void	errors(t_vault *data) // a revoir
+void	errors(t_vault *data)
 {
 	if (data->error_code == 0)
 		return ;
@@ -36,15 +36,20 @@ void	errors(t_vault *data) // a revoir
 		write(2, "Error\n", 6);
 		free (data->args_int);
 	}
-/*	else if (data->error_code == 4)
-	{
-		write(2, "Error\n", 6);
-		free (data->args_int);
-	}*/
 	exit (0);
 }
 
-void	stacks_visu(t_vault *data) // pour debug
+unsigned int	position_x_a(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_a[x] == 0)
+		x++;
+	return (x);
+}
+
+/*void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
 
@@ -58,7 +63,7 @@ void	stacks_visu(t_vault *data) // pour debug
 	}
 	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
-}
+}*/
 
 /*void	check_index(t_vault *data) // pour debug
 {

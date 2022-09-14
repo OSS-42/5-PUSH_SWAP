@@ -51,8 +51,6 @@ static void	check_doubles(t_vault *data)
 		}
 		x++;
 	}
-//	if (data->nbr_args > 500)
-//		data->error_code = 4;
 	errors(data);
 	return ;
 }
