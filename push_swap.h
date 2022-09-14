@@ -38,8 +38,8 @@ typedef struct s_vault
 	int				is_in_order_b;
 	unsigned int	is_min_a;
 	unsigned int	min_a_pos;
-	unsigned int	is_min_b;
 	unsigned int	is_max_a;
+	unsigned int	is_min_b;
 	unsigned int	is_max_b;
 	unsigned int	max_b_pos;
 	unsigned int	pivot;
@@ -47,6 +47,8 @@ typedef struct s_vault
 	unsigned int	max_bits;
 	unsigned int	round;
 	unsigned int	value;
+	unsigned int	next_nbr_ra;
+	unsigned int	next_nbr_rra;
 	int				cost_a_to_top;
 	int				cost_b_to_top;
 	unsigned int	moves;
@@ -77,6 +79,7 @@ void	is_min_a(t_vault *data);
 void	is_max_a(t_vault *data);
 void	is_min_b(t_vault *data);
 void	is_max_b(t_vault *data);
+void	next_move_stack_a(t_vault *data, unsigned int y);
 void	sort_3_init(t_vault *data);
 void	sort_5(t_vault *data);
 void	sort_5_part2(t_vault *data, unsigned int x);

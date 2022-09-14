@@ -136,8 +136,8 @@ void	sort_100(t_vault *data) // a revoir
 	}
 	if (data->index_max > 20 && data->index_max <= 100)
 	{
-		data->pivot = data->index_max / 10;
-		data->pivot_round = 10;
+		data->pivot = data->index_max / 8;
+		data->pivot_round = 8;
 	}
 	if (data->index_max > 100 && data->index_max <= 500)
 	{
@@ -155,24 +155,48 @@ void	sort_100(t_vault *data) // a revoir
 			while (data->stack_a[x] == 0)
 				x++;
 			check_order_a(data);
-			is_max_a(data);
-			is_max_a(data);
+			is_min_a(data);
+			is_max_b(data);
 			check_qty_stack_b(data);
-			if (data->stack_a[x + 1] == data->is_min_a)
-				swap_top_a(data);
-			else if (data->stack_a[x] > data->stack_a[data->index_max - 1] && data->stack_a[data->index_max - 1] < data->stack_a[x + 1] && data->stack_a[x] <= data->pivot * y)
-				rotate_to_first_a(data);
-			if (data->stack_a[x] > data->pivot * y)
-				rotate_to_last_a(data);
-			else if (data->stack_a[x] <= data->pivot * y)
-				push_to_b(data);
+			next_move_stack_a(data, y);
+//			stacks_visu(data);
+//			printf("%s%d\n", "next nbr ra : ", data->next_nbr_ra);
+//			printf("%s%d\n", "next nbr rra : ", data->next_nbr_rra);
+//			if (data->stack_a[x + 1] == data->is_min_a)
+//				swap_top_a(data);
+			if (data->next_nbr_ra < data->next_nbr_rra || data->next_nbr_ra == data->next_nbr_rra)
+			{
+				while (data->next_nbr_ra > 0)
+				{
+					rotate_to_last_a(data);
+					data->next_nbr_ra--;
+				}
+			}
+			else if (data->next_nbr_ra > data->next_nbr_rra)
+			{
+				while (data->next_nbr_rra > 0)
+				{
+					rotate_to_first_a(data);
+					data->next_nbr_rra--;
+				}
+			}
+//			else if (data->stack_a[x] > data->stack_a[data->index_max - 1] && data->stack_a[data->index_max - 1] < data->stack_a[x + 1] && data->stack_a[x] <= data->pivot * y)
+//				rotate_to_first_a(data);
+//			if (data->stack_a[x] > data->pivot * y)
+//				rotate_to_last_a(data);
+			if (data->stack_a[x] <= data->pivot * y
+				|| data->stack_a[x] != data->index_max
+				|| data->stack_a[x] != data->index_max - 1
+				|| data->stack_a[x] != data->index_max - 2)
+					push_to_b(data);
 //			stacks_visu(data);
 			check_qty_stack_b(data);
 			x = 0;
 			while (data->stack_b[x] == 0)
 				x++;
-			if (data->stack_b[x] < data->qty_stack_b / 3
+			if ((data->stack_b[x] < data->qty_stack_b / 3
 				&& data->stack_b[x] < data->stack_b[x + 1])
+				|| data->stack_b[x] == 1)
 					rotate_to_last_b(data);
 			else if (data->stack_b[x] < data->stack_b[x + 1])
 				swap_top_b(data);
@@ -184,6 +208,15 @@ void	sort_100(t_vault *data) // a revoir
 //		printf("%s\n", "next loop");
 	} 
 //	printf("%s\n", "sort 3");
+	check_qty_stack_a(data);
+	if (data->qty_stack_a > 3 && data->qty_stack_a <= 5)
+	{
+		while (data->qty_stack_a > 3)
+		{
+			push_to_b(data);
+			check_qty_stack_a(data);
+		}
+	}
 	sort_3_init(data);
 //	stacks_visu(data);
 	while (data->qty_stack_b > 0)
