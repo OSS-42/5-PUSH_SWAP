@@ -20,6 +20,7 @@ void	is_min_a(t_vault *data)
 	while (data->stack_a[x] == 0)
 		x++;
 	data->is_min_a = data->stack_a[x];
+	data->min_a_pos = x;
 	x++;
 	while (x < data->index_max)
 	{
