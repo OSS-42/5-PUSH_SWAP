@@ -27,7 +27,7 @@ void	determine_pivot(t_vault *data)
 		data->pivot = data->index_max / 5;
 		data->pivot_round = 5;
 	}
-	if (data->index_max > 100 && data->index_max <= 500)
+	if (data->index_max > 100)
 	{
 		data->pivot = data->index_max / 10;
 		data->pivot_round = 10;
@@ -86,8 +86,10 @@ void	smart_sort_b(t_vault *data)
 {
 	unsigned int	x;
 
+	x = 0;
 	check_qty_stack_b(data);
-	x = position_x_a(data);
+	while (data->stack_b[x] == 0)
+		x++;
 	if ((data->stack_b[x] < data->qty_stack_b / 3
 			&& data->stack_b[x] < data->stack_b[x + 1])
 		|| data->stack_b[x] == 1)

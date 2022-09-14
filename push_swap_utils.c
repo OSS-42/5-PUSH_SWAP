@@ -67,7 +67,8 @@ unsigned int	position_x_a(t_vault *data)
 	return (x);
 }
 
-/*void	stacks_visu(t_vault *data) // pour debug
+/*
+void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
 
@@ -81,7 +82,8 @@ unsigned int	position_x_a(t_vault *data)
 	}
 	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
-}*/
+}
+*/
 
 /*void	check_index(t_vault *data) // pour debug
 {
