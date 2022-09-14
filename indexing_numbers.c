@@ -19,7 +19,7 @@ l'utilisation des positions.
 
 */
 
-static void	indexing_loop(t_vault *data)
+void	indexing_loop(t_vault *data)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -48,13 +48,15 @@ static void	indexing_loop(t_vault *data)
 	}
 }
 
-static void	struct_init(t_vault *data)
+void	struct_init(t_vault *data)
 {
 	data->index = 1;
 	data->position = 0;
 	data->switches = ft_calloc(data->nbr_args, 10);
 	data->stack_a = ft_calloc(data->nbr_args, 10);
 	data->min = INT_MAX;
+	data->is_in_order_a = 0;
+	data->is_it_both = 0;
 }
 
 void	algo_choice(t_vault *data)
@@ -81,8 +83,6 @@ void	indexing_numbers(t_vault *data)
 	struct_init(data);
 	indexing_loop(data);
 	data->index_max = data->index - 1;
-	data->is_in_order_a = 0;
-	data->is_it_both = 0;
 	algo_choice(data);
 	free (data->stack_a);
 	free (data->switches);

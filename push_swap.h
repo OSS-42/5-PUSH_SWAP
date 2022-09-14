@@ -56,8 +56,15 @@ typedef struct s_vault
 }	t_vault;
 
 /***** Parsing & logique *****/
+void			from_a_to_long(t_vault *data);
+void			check_doubles(t_vault *data);
+int				check_args(t_vault *data);
+int				quotes_to_args(t_vault *data, char **argv);
+void			saving_args(t_vault *data, int argc, char **argv);
+void			struct_init(t_vault *data);
 void			errors(t_vault *data);
 void			indexing_numbers(t_vault *data);
+void			indexing_loop(t_vault *data);
 void			algo_choice(t_vault *data);
 
 /***** Common utils *****/

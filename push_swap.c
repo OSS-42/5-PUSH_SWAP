@@ -16,25 +16,22 @@
 min = -2147483648 ; max = 2147483647
 */
 
-static void	from_a_to_long(t_vault *data)
+void	saving_args(t_vault *data, int argc, char **argv)
 {
-	unsigned int	x;
-
-	x = 0;
-	data->args_int = malloc(sizeof(long *) * data->nbr_args + 1);
-	if (!data->args_int)
-		return ;
-	while (x < data->nbr_args)
+	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
-		data->args_int[x] = ft_atolong(data->args[x]);
-		if (data->args_int[x] > INT_MAX || data->args_int[x] < INT_MIN)
-			data->error_code = 3;
-		x++;
+		data->args = malloc(sizeof(char *) * argc); // a free lorsque pas quotes
+		if (!data->args)
+			return ;
+		data->args = &argv[1];
+		data->nbr_args = argc - 1;
+		check_args(data);
 	}
-	errors(data);
+	else
+		quotes_to_args(data, argv);
 }
 
-static void	check_doubles(t_vault *data)
+void	check_doubles(t_vault *data)
 {
 	unsigned int	x;
 	unsigned int	y;
@@ -55,7 +52,7 @@ static void	check_doubles(t_vault *data)
 	return ;
 }
 
-static int	check_args(t_vault *data)
+int	check_args(t_vault *data)
 {
 	unsigned int	x;
 	int				y;
@@ -80,7 +77,7 @@ static int	check_args(t_vault *data)
 	return (0);
 }
 
-static int	quotes_to_args(t_vault *data, char **argv)
+int	quotes_to_args(t_vault *data, char **argv)
 {
 	int	x;
 
@@ -103,22 +100,13 @@ int	main(int argc, char **argv)
 	data.nbr_args = 0;
 	if (argc == 1 || !*argv[1])
 		return (0);
-	if (!ft_strchr(argv[1], ' ') || argc > 2)
-	{
-		data.args = malloc(sizeof(char *) * argc); // a free lorsque pas quotes
-		if (!data.args)
-			return (0);
-		data.args = &argv[1];
-		data.nbr_args = argc - 1;
-		check_args(&data);
-	}
-	else
-		quotes_to_args(&data, argv);
+	saving_args(&data, argc, argv);
 	from_a_to_long(&data);
 	if (data.nbr_args == 1)
 		return (data.args_int[1]);
 	if (data.nbr_args > 1)
 		check_doubles(&data);
 	indexing_numbers(&data);
+	free(data.args_int);
 	return (0);
 }

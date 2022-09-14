@@ -20,6 +20,24 @@ Code 3 : Hors limites INT
 Code 4 : Over 500 values - pas implémenté, car pas demandé
 */
 
+void	from_a_to_long(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	data->args_int = malloc(sizeof(long *) * data->nbr_args + 1);
+	if (!data->args_int)
+		return ;
+	while (x < data->nbr_args)
+	{
+		data->args_int[x] = ft_atolong(data->args[x]);
+		if (data->args_int[x] > INT_MAX || data->args_int[x] < INT_MIN)
+			data->error_code = 3;
+		x++;
+	}
+	errors(data);
+}
+
 void	errors(t_vault *data)
 {
 	if (data->error_code == 0)
