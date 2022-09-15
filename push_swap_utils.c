@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:42:13 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/11 13:12:08 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:13:42 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,16 @@ void	from_a_to_long(t_vault *data)
 		if (data->args_int[x] > INT_MAX || data->args_int[x] < INT_MIN)
 			data->error_code = 3;
 		x++;
+	}
+	if (data->nbr_argc == 2)
+	{
+		x = 0;
+		while (x < data->nbr_args)
+		{
+			free (data->args[x]);
+			x++;
+		}
+		free(data->args);
 	}
 	errors(data);
 }
