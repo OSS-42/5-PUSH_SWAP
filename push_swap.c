@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/15 11:23:10 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 11:46:40 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,10 @@ min = -2147483648 ; max = 2147483647
 
 void	saving_args(t_vault *data, int argc, char **argv)
 {
-	int	x;
-
 	if (!ft_strchr(argv[1], ' ') || argc > 2)
 	{
-		data->args = malloc(sizeof(char *) * argc); // a free lorsque pas quotes
-		if (!data->args)
-			return ;
 		data->args = &argv[1];
 		data->args[argc] = "\0";
-		x = 0;
-//		while (x++ < argc)
-//			data->args[x] = ft_calloc(sizeof(long), 1);
 		data->nbr_args = argc - 1;
 		check_args(data);
 	}
@@ -114,7 +106,6 @@ int	main(int argc, char **argv)
 	if (data.nbr_args > 1)
 		check_doubles(&data);
 	indexing_numbers(&data);
-//	free_dbl_ptr((void **)data.args);
 	free(data.args_int);
 	return (0);
 }
