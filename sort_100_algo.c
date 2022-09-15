@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 11:32:46 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/14 11:32:46 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:26:52 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,24 @@ void	sort_100_b_to_a(t_vault *data)
 		check_qty_stack_a(data);
 		check_order_a(data);
 		x = position_x_a(data);
-		y = 0;
-		while (data->stack_b[y] == 0)
-			y++;
-		preparation_of_a(data, x, y);
+		y = position_x_b(data);
 		moves_cost_max_in_a(data);
+		check_before_max_b(data);
 		while (abs(data->cost_a_to_top) + abs(data->cost_b_to_top) != 0)
 			moves_b_to_a(data);
-		check_order_a(data);
+//		check_order_a(data);
+//		is_min_a(data);
+//		is_max_b(data);
+		stacks_visu(data);
+//		if (data->is_in_order_a == 1 && data->is_min_a > data->is_max_b)
+		push_to_a(data);
 		is_min_a(data);
-		is_max_b(data);
-		if (data->is_in_order_a == 1 && data->is_min_a > data->is_max_b)
-			push_to_a(data);
+		stacks_visu(data);
+		x = position_x_a(data);
+		if (data->stack_a[x] == data->is_min_a + 1)
+			swap_top_a(data);
+		stacks_visu(data);
+//		exit (0);
 		check_qty_stack_b(data);
 	}
 }

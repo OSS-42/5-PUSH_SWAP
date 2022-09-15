@@ -35,11 +35,14 @@ SRC = push_swap.c\
 	  sort_100_utils_a_to_b.c\
 	  sort_100_utils_b_to_a.c
 
+#HEADER = push_swap.h
+
 #SRC_BONUS = \
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o) 
 #OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
+#.o: .c
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $@
 

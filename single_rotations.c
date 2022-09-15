@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 22:23:19 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/08/11 13:13:03 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 14:22:12 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	rotate_to_last_a(t_vault *data)
 			x++;
 		}
 		data->moves++;
+		data->cost_a_to_top -= 1;
 		if (data->is_it_both != 1)
 			printf("%s\n", "ra");
 	}
@@ -59,6 +60,7 @@ void	rotate_to_first_a(t_vault *data)
 			x--;
 		}
 		data->moves++;
+		data->cost_a_to_top += 1;
 		if (data->is_it_both != 1)
 			printf("%s\n", "rra");
 	}
@@ -84,6 +86,7 @@ void	rotate_to_last_b(t_vault *data)
 			x++;
 		}
 		data->moves++;
+		data->cost_b_to_top -= 1;
 		if (data->is_it_both != 1)
 			printf("%s\n", "rb");
 	}
@@ -107,6 +110,7 @@ void	rotate_to_first_b(t_vault *data)
 			x--;
 		}
 		data->moves++;
+		data->cost_b_to_top += 1;
 		if (data->is_it_both != 1)
 			printf("%s\n", "rrb");
 	}

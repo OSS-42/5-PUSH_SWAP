@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/15 10:53:08 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 15:11:30 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <math.h>
 # include "includes/libft/libft.h"
 
 typedef struct s_vault
@@ -79,6 +80,7 @@ void			is_max_a(t_vault *data);
 void			is_min_b(t_vault *data);
 void			is_max_b(t_vault *data);
 unsigned int	position_x_a(t_vault *data);
+unsigned int	position_x_b(t_vault *data);
 
 /***** push_swap moves *****/
 void			push_to_a(t_vault *data);
@@ -115,11 +117,12 @@ void			moves_cost_max_in_b(t_vault *data);
 void			moves_cost_max_in_a(t_vault *data);
 void			smart_sort_a(t_vault *data, unsigned int x,
 					unsigned int y, unsigned int z);
-void			preparation_of_a(t_vault *data, unsigned int x, unsigned int y);
+//void			preparation_of_a(t_vault *data, unsigned int x, unsigned int y);
+void			check_before_max_b(t_vault *data);
 void			moves_b_to_a(t_vault *data);
 
 /***** Pour debug *****/
-//void	stacks_visu(t_vault *data); //pour debug
+void	stacks_visu(t_vault *data); //pour debug
 //void	check_index(t_vault *data); //pour debug
 
 #endif

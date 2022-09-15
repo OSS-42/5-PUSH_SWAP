@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:42:13 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/15 11:30:02 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:24:41 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,17 @@ unsigned int	position_x_a(t_vault *data)
 	return (x);
 }
 
-/*
+unsigned int	position_x_b(t_vault *data)
+{
+	unsigned int	x;
+
+	x = 0;
+	while (data->stack_b[x] == 0)
+		x++;
+	return (x);
+}
+
+
 void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
@@ -93,7 +103,7 @@ void	stacks_visu(t_vault *data) // pour debug
 	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
 }
-*/
+
 
 /*void	check_index(t_vault *data) // pour debug
 {

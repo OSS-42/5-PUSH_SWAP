@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 10:51:15 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/14 10:51:15 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:26:42 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,48 @@ void	smart_sort_a(t_vault *data, unsigned int x,
 		moves_cost_max_in_b(data);
 }
 
+void	check_before_max_b(t_vault *data)
+{
+	unsigned int	x;
+
+	x = position_x_b(data);
+	is_max_b(data);
+	printf("hello\n");
+	printf("%s%d\n", "valeur a x : ", data->stack_b[x]);
+	printf("%s%d\n", "max b : ", data->is_max_b);
+	if (data->stack_b[x] == data->is_max_b - 1)
+		push_to_a(data);
+}
+
+void	moves_b_to_a(t_vault *data)
+{
+	if (data->cost_a_to_top > 0 && data->cost_b_to_top > 0)
+	{
+		rotate_both_to_last(data);
+		check_before_max_b(data);
+	}
+	else if (data->cost_a_to_top < 0 && data->cost_b_to_top < 0)
+	{
+		rotate_both_to_first(data);
+		check_before_max_b(data);
+	}
+	else if (data->cost_a_to_top < 0 && data->cost_b_to_top == 0)
+		rotate_to_first_a(data);
+	else if (data->cost_b_to_top > 0 && data->cost_a_to_top == 0)
+	{
+		rotate_to_last_b(data);
+		check_before_max_b(data);
+	}
+	else if (data->cost_a_to_top > 0 && data->cost_b_to_top == 0)
+		rotate_to_last_a(data);
+	else
+	{
+		rotate_to_first_b(data);
+		check_before_max_b(data);
+	}
+}
+
+/*
 void	preparation_of_a(t_vault *data, unsigned int x, unsigned int y)
 {
 	unsigned int	z;
@@ -113,31 +155,4 @@ void	preparation_of_a(t_vault *data, unsigned int x, unsigned int y)
 		is_max_b(data);
 	}
 }
-
-void	moves_b_to_a(t_vault *data)
-{
-	if (data->cost_a_to_top > 0 && data->cost_b_to_top > 0)
-		rotate_both_to_last(data);
-	else if (data->cost_a_to_top < 0 && data->cost_b_to_top < 0)
-		rotate_both_to_first(data);
-	else if (data->cost_a_to_top < 0 && data->cost_b_to_top == 0)
-	{
-		rotate_to_first_a(data);
-		data->cost_a_to_top += 1;
-	}
-	else if (data->cost_b_to_top > 0 && data->cost_a_to_top == 0)
-	{
-		rotate_to_last_b(data);
-		data->cost_b_to_top -= 1;
-	}
-	else if (data->cost_a_to_top > 0 && data->cost_b_to_top == 0)
-	{
-		rotate_to_last_a(data);
-		data->cost_a_to_top -= 1;
-	}
-	else
-	{
-		rotate_to_first_b(data);
-		data->cost_b_to_top += 1;
-	}
-}
+*/
