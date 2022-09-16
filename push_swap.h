@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/15 15:11:30 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:21:42 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ void			sort_500_bits(t_vault *data, unsigned int round);
 void			next_move_stack_a(t_vault *data, unsigned int y);
 void			determine_next_move_in_a(t_vault *data, unsigned int y);
 void			smart_sort_b(t_vault *data);
-void			determine_pivot(t_vault *data);
 /***** B to A *****/
 void			moves_cost_max_in_b(t_vault *data);
 void			moves_cost_max_in_a(t_vault *data);
@@ -122,7 +121,7 @@ void			check_before_max_b(t_vault *data);
 void			moves_b_to_a(t_vault *data);
 
 /***** Pour debug *****/
-void	stacks_visu(t_vault *data); //pour debug
+//void	stacks_visu(t_vault *data); //pour debug
 //void	check_index(t_vault *data); //pour debug
 
 #endif

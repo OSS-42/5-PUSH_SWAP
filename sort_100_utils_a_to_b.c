@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_100_utils.c                                   :+:      :+:    :+:   */
+/*   sort_100_utils_a_to_b.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:58:04 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/14 09:58:04 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 10:14:47 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
 void	determine_pivot(t_vault *data)
 {
 	check_order_a(data);
@@ -24,8 +25,8 @@ void	determine_pivot(t_vault *data)
 	}
 	if (data->index_max > 20 && data->index_max <= 100)
 	{
-		data->pivot = data->index_max / 5;
-		data->pivot_round = 5;
+		data->pivot = data->index_max / 4;
+		data->pivot_round = 4;
 	}
 	if (data->index_max > 100)
 	{
@@ -33,6 +34,7 @@ void	determine_pivot(t_vault *data)
 		data->pivot_round = 10;
 	}
 }
+*/
 
 void	next_move_stack_a(t_vault *data, unsigned int y)
 {
