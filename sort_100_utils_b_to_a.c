@@ -94,11 +94,9 @@ void	check_before_max_b(t_vault *data)
 
 	x = position_x_b(data);
 	is_max_b(data);
-	printf("hello\n");
-	printf("%s%d\n", "valeur a x : ", data->stack_b[x]);
-	printf("%s%d\n", "max b : ", data->is_max_b);
 	if (data->stack_b[x] == data->is_max_b - 1)
 		push_to_a(data);
+	moves_cost_max_in_b(data);
 }
 
 void	moves_b_to_a(t_vault *data)
