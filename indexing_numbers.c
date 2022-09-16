@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:24:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/16 11:47:09 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:30:06 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	struct_init(t_vault *data)
 {
 	data->index = 1;
 	data->position = 0;
-	data->switches = ft_calloc(data->nbr_args, 10);
-	data->stack_a = ft_calloc(data->nbr_args, 10);
+	data->switches = ft_calloc(data->nbr_args, 11);
+	data->stack_a = ft_calloc(data->nbr_args, 11);
 	data->min = INT_MAX;
 	data->is_in_order_a = 0;
 	data->is_it_both = 0;
@@ -70,7 +70,7 @@ void	algo_choice(t_vault *data)
 		sort_3_init(data);
 	else if (data->index_max > 3 && data->index_max <= 5)
 		sort_5(data);
-	else if (data->index_max > 5 && data->index_max <= 100)
+	else if (data->index_max > 5 && data->index_max <= 300)
 		sort_100(data);
 	else if (data->index_max > 100)
 		sort_500(data);

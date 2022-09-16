@@ -6,35 +6,11 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 09:58:04 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/16 10:14:47 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:30:07 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void	determine_pivot(t_vault *data)
-{
-	check_order_a(data);
-	if (data->is_in_order_a == 1)
-		return ;
-	if (data->index_max <= 20)
-	{
-		data->pivot = data->index_max / 2;
-		data->pivot_round = 2;
-	}
-	if (data->index_max > 20 && data->index_max <= 100)
-	{
-		data->pivot = data->index_max / 4;
-		data->pivot_round = 4;
-	}
-	if (data->index_max > 100)
-	{
-		data->pivot = data->index_max / 10;
-		data->pivot_round = 10;
-	}
-}
-*/
 
 void	next_move_stack_a(t_vault *data, unsigned int y)
 {
@@ -99,3 +75,27 @@ void	smart_sort_b(t_vault *data)
 	else if (data->stack_b[x] < data->stack_b[x + 1])
 		swap_top_b(data);
 }
+
+/*
+void	determine_pivot(t_vault *data)
+{
+	check_order_a(data);
+	if (data->is_in_order_a == 1)
+		return ;
+	if (data->index_max <= 20)
+	{
+		data->pivot = data->index_max / 2;
+		data->pivot_round = 2;
+	}
+	if (data->index_max > 20 && data->index_max <= 100)
+	{
+		data->pivot = data->index_max / 4;
+		data->pivot_round = 4;
+	}
+	if (data->index_max > 100)
+	{
+		data->pivot = data->index_max / 10;
+		data->pivot_round = 10;
+	}
+}
+*/

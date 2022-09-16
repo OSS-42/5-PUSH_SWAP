@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:32:43 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/16 13:21:42 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:27:38 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void			sort_5(t_vault *data);
 void			sort_5_part2(t_vault *data, unsigned int x);
 void			sort_100(t_vault *data);
 void			sort_100_a_to_b(t_vault *data);
-void			sort_100_clean_a(t_vault *data);
+void			sort_100_loop_a(t_vault *data, unsigned int div);
 void			sort_100_b_t_a(t_vault *data);
 void			sort_500(t_vault *data);
 void			sort_500_bits(t_vault *data, unsigned int round);
@@ -116,7 +116,6 @@ void			moves_cost_max_in_b(t_vault *data);
 void			moves_cost_max_in_a(t_vault *data);
 void			smart_sort_a(t_vault *data, unsigned int x,
 					unsigned int y, unsigned int z);
-//void			preparation_of_a(t_vault *data, unsigned int x, unsigned int y);
 void			check_before_max_b(t_vault *data);
 void			moves_b_to_a(t_vault *data);
 

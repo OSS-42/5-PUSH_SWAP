@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 08:44:26 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/15 11:46:40 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:11:20 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int	quotes_to_args(t_vault *data, char **argv)
 		data->nbr_args++;
 	check_args(data);
 	errors(data);
-	if (data->nbr_args == 1)
-		return (*data->args[1]);
 	return (0);
 }
 
@@ -102,7 +100,10 @@ int	main(int argc, char **argv)
 	saving_args(&data, argc, argv);
 	from_a_to_long(&data);
 	if (data.nbr_args == 1)
-		return (data.args_int[1]);
+	{
+		free(data.args_int);
+		return (0);
+	}
 	if (data.nbr_args > 1)
 		check_doubles(&data);
 	indexing_numbers(&data);

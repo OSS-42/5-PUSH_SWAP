@@ -6,7 +6,7 @@
 /*   By: ewurstei <ewurstei@student.42quebec.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 09:42:13 by ewurstei          #+#    #+#             */
-/*   Updated: 2022/09/15 16:24:41 by ewurstei         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:07:19 by ewurstei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	from_a_to_long(t_vault *data)
 	unsigned int	x;
 
 	x = 0;
-	data->args_int = malloc(sizeof(long *) * data->nbr_args + 1);
+	data->args_int = malloc(sizeof(long) * data->nbr_args + 1);
 	if (!data->args_int)
 		return ;
 	while (x < data->nbr_args)
@@ -35,7 +35,7 @@ void	from_a_to_long(t_vault *data)
 			data->error_code = 3;
 		x++;
 	}
-	if (data->nbr_argc == 2)
+	if (data->nbr_argc == 2 && data->nbr_args > 1)
 		free_dbl_ptr((void **)data->args);
 	errors(data);
 }
@@ -79,8 +79,7 @@ unsigned int	position_x_b(t_vault *data)
 	return (x);
 }
 
-
-void	stacks_visu(t_vault *data) // pour debug
+/*void	stacks_visu(t_vault *data) // pour debug
 {
 	unsigned int	x;
 
@@ -95,7 +94,7 @@ void	stacks_visu(t_vault *data) // pour debug
 	printf("%s%d\n", "moves qty = ", data->moves);
 	return ;
 }
-
+*/
 
 /*void	check_index(t_vault *data) // pour debug
 {
