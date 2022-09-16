@@ -36,15 +36,7 @@ void	from_a_to_long(t_vault *data)
 		x++;
 	}
 	if (data->nbr_argc == 2)
-	{
-		x = 0;
-		while (x < data->nbr_args)
-		{
-			free (data->args[x]);
-			x++;
-		}
-		free (data->args);
-	}
+		free_dbl_ptr((void **)data->args);
 	errors(data);
 }
 
