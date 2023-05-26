@@ -1,6 +1,6 @@
 # 5-PUSH_SWAP
 
-![PUSH_SWAP](https://github.com/byaliego/42-project-badges/blob/main/badges/push_swap.png)
+![PUSH_SWAP](https://github.com/byaliego/42-project-badges/blob/main/badges/push_swape.png)
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/xDeadpoolx/5-PUSH_SWAP?style=for-the-badge)
 
